@@ -1,0 +1,34 @@
+
+.lmc{
+  color:#ED7966;
+  font-size: 24px;
+  font-weight: 800;
+ 
+  align-self: flex-end;
+ margin-bottom: 5px;
+}
+.loginbtn{
+  background-color: #ED7966;
+  border: 0;
+  width: 25.4rem;
+  --bs-btn-hover-bg: #ED7966;
+  --bs-btn-active-bg: #ED7966;
+  ; 
+  /* 406 px */
+}
+.login{
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+/* identical to box height */
+  color: #09174A;
+  margin-bottom: 15px;
+  
+}
+.login-labels{
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+
+color: #09174A;
+}
