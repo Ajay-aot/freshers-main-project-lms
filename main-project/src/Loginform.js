@@ -6,7 +6,7 @@ import Sidebar from "./Sidebar";
 export default function Loginform({ authfun }) {
   const adminUser = {
     email: "newadmin@admin.com",
-    password: "admin123",
+    password: "123",
   };
 
   const [user, setUser] = useState({ email: "", password: "" });
@@ -23,6 +23,7 @@ export default function Loginform({ authfun }) {
       authfun();
       console.log("matched");
     } else {
+        alert("please Email and Password")
       console.log("not matching");
     }
   };

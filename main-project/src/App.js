@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
-import Demo from './Demopage';
+import Adminstudent from './adminstudents'
 import Loginform from './Loginform';
 import { useState } from 'react';
 
@@ -15,9 +15,10 @@ function App() {
   return (
     <div className="App">
     
-    {!Authentication ?( <Loginform authfun={Authfun} /> ) : (<Demo/>)}
+    {!Authentication ?( <Loginform authfun={Authfun} /> ) : (<Adminstudent/>)}
     </div>
   );
 }
 
 export default App;
+
