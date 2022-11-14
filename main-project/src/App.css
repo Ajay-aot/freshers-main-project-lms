@@ -40,12 +40,51 @@ color: #09174A;
 
 .btn-primary {
   background-color: #ED7966;
+  --bs-btn-active-bg: #ED7966;
 }
 .headings{
 font-weight: 500;
 font-size: 16px;
 line-height: 20px;
+color: #646464;
+
 }
 .items{
   border-bottom: 1px;
+}
+.list{
+  color: #09174A;
+    font-weight: 500;
+font-size: 16px;
+line-height: 20px;
+}
+.ash{
+  color: #7E7E7F;
+}
+.trash{
+  color:#D04444;
+}
+.mainpage{
+  background-color: #F5F5F5;
+}
+.listcontent{
+  background-color: white;
+}
+.hoverbutton:hover{
+  background-color: #ec8d7e;
+}
+.cancel{
+  color: #7E7E7F;
+  border: 1px solid #7E7E7F;
+  background-color: white;
+  --bs-btn-hover-bg: none;
+  --bs-btn-hover-color: #7E7E7F ;
+  --bs-btn-hover-border-color:#7E7E7F;
+  --bs-btn-active-border-color: #7E7E7F;
+}
+/* .issuedbooks{
+  width: 100%;
+} */
+#root > div > div > div.left.col-2 > div > a:nth-child(1) , a:nth-child(2),a:nth-child(3){
+  text-decoration: none;
 }
