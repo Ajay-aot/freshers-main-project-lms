@@ -9,6 +9,7 @@ export default function Orangesidebar() {
   return (
 
     <div className="left col-2">
+
       <img className="ps-4 pt-5" src={logo2} alt="logo2"/>
         <div className="d-flex flex-column px-3 gap-3">
         <Link to="/">
@@ -29,8 +30,8 @@ export default function Orangesidebar() {
             Students
           </Button>
         </Link>
+      
       </div>
     </div>
-  )
-
+    )
 }

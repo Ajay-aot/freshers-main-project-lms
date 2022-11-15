@@ -1,23 +1,22 @@
-import { useState } from "react"
+import { useState,useContext } from "react"
 import {RiPencilFill} from 'react-icons/ri'
 import {BsTrashFill,BsEye} from 'react-icons/bs'
 
-function Content(){
+import { studentContext}  from  '../App'
 
-    const [data,setData] = useState([
-        {key: 1 , name:"Nitha Samuel",mail:"nithasamuel@gmail.com"},
-        {key: 2 , name:"Anjali Thomas", mail:"anjali.t@hotmail.com"},
-        {key: 3 , name:"Rahul S", mail:"srahul@gmail.com"}  
-    ])
+function Content(){
+    const [studentArray,setStudentarray] = useContext(studentContext)
+
+    
     return(
         
 
-        data.map((item)=>{
+        studentArray.map((item)=>{
             return( 
                 <>
                 <div className="d-flex mt-3  items border-bottom list  " key={item.key}>
                     <p className="col-5 m-0 px-4">{item.name}</p>
-                    <p className="col-3">{item.mail}</p>
+                    <p className="col-3">{item.email}</p>
                     <div className="d-flex gap-3  mt-2 col-4 m-0 justify-content-center ">
                     <RiPencilFill className="ash"/>
                     <BsTrashFill className="trash" />

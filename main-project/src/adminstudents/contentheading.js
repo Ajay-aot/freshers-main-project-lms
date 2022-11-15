@@ -1,7 +1,7 @@
 import Content from './content'
 function Heading(){
     return(
-        <div className='listcontent '>
+        <div className='listcontent px-4 '>
        
         <div className='d-flex  mt-5 pt-3 pb-3 headings border-bottom'>
                     <p className='col-5  m-0 px-4'>Name</p>

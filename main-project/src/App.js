@@ -2,16 +2,19 @@
 import './App.css';
 import Adminstudent from './adminstudents/adminstudents'
 import Loginform from './Loginform';
-import { useState } from 'react';
+import { createContext, useState } from 'react';
 import {BrowserRouter as Router,Routes,Route} from "react-router-dom"
 // import Mainfunction from './adminstudents/mainpage'
 import Adminissuedbooks from './adminissuedbooks/Adminissuedbooks'
 import Adminallbooks from './adminallbooks/Adminallbooks'
 
-
+const studentContext = createContext()
+const adminissuedBook = createContext()
 
 function App() {
 
+  const [studentArray,setStudentarray] = useState([])
+  const [adssuedBooksarray,setAdissuedbooksarray] = useState([])
 
   const [Authentication,setAuthentication] = useState(false)
   
@@ -20,8 +23,8 @@ function App() {
   }
   return (
     <div className="App">
-      
-           
+      <adminissuedBook.Provider value={[adssuedBooksarray,setAdissuedbooksarray]}>
+           <studentContext.Provider value={[studentArray,setStudentarray]}>
             <Router>
                 <Routes>
                 <Route path="/" element={ !Authentication ?( <Loginform authfun={Authfun} /> ) : (<Adminissuedbooks/>)}/>
@@ -30,6 +33,8 @@ function App() {
 
               </Routes>
            </Router>
+           </studentContext.Provider>
+           </adminissuedBook.Provider>
     
     
     </div>
@@ -37,4 +42,5 @@ function App() {
 }
 
 export default App;
+export {studentContext}
 

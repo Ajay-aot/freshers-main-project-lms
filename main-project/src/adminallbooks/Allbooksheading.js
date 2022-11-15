@@ -1,7 +1,7 @@
 import Content from './Allbookcontent'
 function Allbooksheading(){
     return(
-        <div className='listcontent '>
+        <div className='listcontent px-4 '>
        
         <div className='d-flex py-4 px-4 mt-5 pt-3  headings border-bottom'>
                     <p className=' col-2 m-0 '>Book Title</p>

@@ -1,13 +1,37 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Modal from 'react-bootstrap/Modal';
-import React, { useState } from 'react';
+import React, { useState,useContext  } from 'react';
+import { studentContext}  from  '../App'
+import shortid from "shortid"
+
 
 function Search(){
     const [show, setShow] = useState(false);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const [studentArray,setStudentarray] = useContext(studentContext)
+
+
+
+
+    const [students,setStudents] = useState({
+      name:"", email:"", password:"", confirmpassword:""
+    })
+
+    const handleInput = (e) =>{
+     let name = e.target.name
+     let value = e.target.value
+     setStudents({...students, [name]:value})
+     console.log(students)
+    }
+    const handleAddstudent = () =>{
+      setStudentarray([...studentArray,{key:shortid.generate(),name:students.name,email:students.email,password:students.confirmpassword}])
+      console.log(studentArray)
+    }
+
+
     return(
         <div className="d-flex justify-content-between mt-4">
             <form className="col-6 ">
@@ -29,7 +53,9 @@ function Search(){
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Name</Form.Label>
               <Form.Control
+                name="name"
                 type="text"
+                onChange={handleInput}
                 placeholder="Eg: John Doe"
                 autoFocus
               />
@@ -37,25 +63,31 @@ function Search(){
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Email</Form.Label>
               <Form.Control
+                name="email"
                 type="email"
+                onChange={handleInput}
                 placeholder="Eg: johndoe@gmail.com"
-                autoFocus
+                // autoFocus
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Password</Form.Label>
               <Form.Control
+                name="password"  
                 type="password"
-                placeholder="name@example.com"
-                autoFocus
+                onChange={handleInput}
+                placeholder="********"
+                // autoFocus
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Confirm Password</Form.Label>
               <Form.Control
+                name="confirmpassword" 
                 type="password"
-                placeholder="name@example.com"
-                autoFocus
+                onChange={handleInput}
+                placeholder="********"
+                // autoFocus
               />
             </Form.Group>
             
@@ -65,7 +97,7 @@ function Search(){
           <Button className="cancel" onClick={handleClose}>
             Cancel
           </Button>
-          <Button variant="primary" className="border-0 hoverbutton" onClick={handleClose}>
+          <Button variant="primary" className="border-0 hoverbutton" onClick={()=>{handleClose();handleAddstudent()}}>
             Add student
           </Button>
         </Modal.Footer>

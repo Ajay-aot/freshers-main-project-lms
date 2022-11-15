@@ -1,7 +1,7 @@
 import Issuedcontent from './Issuedcontent'
 function Issuedheading(){
     return(
-        <div className='listcontent '>
+        <div className='listcontent px-4 '>
         
         <div className='d-flex pt-3 pb-1 px-4 mt-5  gap-2 headings border-bottom'>
                     <p className='col-2 m-0 '>Book Title</p>
