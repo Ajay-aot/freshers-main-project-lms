@@ -88,11 +88,7 @@ function Content() {
     )
   }
 
-//   const newPasswordcheck = () =>{
-//     if(getStudentpassword === getStudentconfirmpassword){
-//         alert("Missmatching password")
-//     }
-// }
+
 
 
   const handleDelete = (deleteId) => {

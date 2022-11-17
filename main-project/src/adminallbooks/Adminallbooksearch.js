@@ -24,6 +24,7 @@ function Search() {
   const handleInputallbooks = (e) => {
     let name = e.target.name;
     let value = e.target.value;
+    console.log(value)
     setAdallBooks({ ...adallBooks, [name]: value });
     console.log(adallBooks);
   };
@@ -98,7 +99,7 @@ function Search() {
             <Form.Label>Language</Form.Label>
             <Form.Select aria-label="Default select example"
               className="mb-3 "
-              name="language "
+              name="language"
               // value={adallBooks.language}
               onChange={handleInputallbooks}>
                 <option>Open this select menu</option>
