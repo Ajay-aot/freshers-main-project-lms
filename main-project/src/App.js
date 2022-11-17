@@ -7,14 +7,17 @@ import {BrowserRouter as Router,Routes,Route} from "react-router-dom"
 // import Mainfunction from './adminstudents/mainpage'
 import Adminissuedbooks from './adminissuedbooks/Adminissuedbooks'
 import Adminallbooks from './adminallbooks/Adminallbooks'
+import ViewMainpage from './viewComponent/viewMainpage';
 
 const studentContext = createContext()
-const adminissuedBook = createContext()
+// const adminissuedBook = createContext()
+const adminallbooksContext = createContext()
 
 function App() {
 
   const [studentArray,setStudentarray] = useState([])
-  const [adssuedBooksarray,setAdissuedbooksarray] = useState([])
+  // const [adissuedBooksarray,setAdissuedbooksarray] = useState([])
+  const [adallbooksArray,setAdallbooksarray] = useState([])
 
   const [Authentication,setAuthentication] = useState(false)
   
@@ -23,18 +26,23 @@ function App() {
   }
   return (
     <div className="App">
-      <adminissuedBook.Provider value={[adssuedBooksarray,setAdissuedbooksarray]}>
+      {/* <adminissuedBook.Provider value={[adissuedBooksarray,setAdissuedbooksarray]}> */}
+      <adminallbooksContext.Provider value={[adallbooksArray,setAdallbooksarray]}>
            <studentContext.Provider value={[studentArray,setStudentarray]}>
+           
             <Router>
                 <Routes>
                 <Route path="/" element={ !Authentication ?( <Loginform authfun={Authfun} /> ) : (<Adminissuedbooks/>)}/>
-                <Route path="/Students" element={<Adminstudent/>}/>
-                <Route path="/Allbooks" element={<Adminallbooks/>}/>
+                <Route path="/students" element={<Adminstudent/>}/>
+                <Route path="/allbooks" element={<Adminallbooks/>}/>
+                <Route path="/viwestudent" element={<ViewMainpage/>}/>
 
               </Routes>
            </Router>
-           </studentContext.Provider>
-           </adminissuedBook.Provider>
+           
+            </studentContext.Provider>
+           </adminallbooksContext.Provider>
+        {/* </adminissuedBook.Provider> */}
     
     
     </div>
@@ -43,4 +51,6 @@ function App() {
 
 export default App;
 export {studentContext}
+// export {adminissuedBook}
+export {adminallbooksContext}
 

@@ -1,13 +1,40 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Modal from 'react-bootstrap/Modal';
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
+import adminissuedBook from '../App'
+import shortid from "shortid"
 
 function Search(){
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    // const [adissuedBooksarray,setAdissuedbooksarray] = useContext(adminissuedBook)
+
+
+
+
+    // const [adissuedBooks,setAdissuedBooks] = useState({
+    //   name:"", email:"", password:"", confirmpassword:""
+    // })
+
+    // const handleInput = (e) =>{
+    //  let name = e.target.name
+    //  let value = e.target.value
+    //  setStudents({...students, [name]:value})
+    //  console.log(students)
+    // }
+    // const handleAddstudent = () =>{
+    //   setStudentarray([...studentArray,{key:shortid.generate(),name:students.name,email:students.email,password:students.confirmpassword}])
+    //   console.log(studentArray)
+    // }
+
+
+
+
+
     return(
         <div className="d-flex justify-content-between mt-4">
             <form className="col-6 ">
@@ -49,7 +76,7 @@ function Search(){
               <Form.Control
                 type="date"
                 placeholder="name@example.com"
-                autoFocus
+                
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -57,7 +84,7 @@ function Search(){
               <Form.Control
                 type="date"
                 placeholder="name@example.com"
-                autoFocus
+                
               />
             </Form.Group>
             

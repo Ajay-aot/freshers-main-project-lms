@@ -54,7 +54,7 @@ color: #646464;
 }
 .list{
   color: #09174A;
-    font-weight: 500;
+  font-weight: 500;
 font-size: 16px;
 line-height: 20px;
 }
@@ -65,7 +65,7 @@ line-height: 20px;
   color:#D04444;
 }
 .mainpage{
-  background-color: #F5F5F5;
+  background-color: #fffbfa;
 }
 .listcontent{
   background-color: white;
@@ -87,4 +87,7 @@ line-height: 20px;
 } */
 #root > div > div > div.left.col-2 > div > a:nth-child(1) , a:nth-child(2),a:nth-child(3){
   text-decoration: none;
+}
+.studentviewpage{
+  width: 100%;
 }

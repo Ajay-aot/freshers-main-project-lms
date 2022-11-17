@@ -18,20 +18,25 @@ export default function Orangesidebar() {
             Issued Books
           </Button>
         </Link>
-        <Link to="/Allbooks">
+        <Link to="/allbooks">
           <Button className="col-12 d-flex gap-2 align-items-center border-0 hoverbutton">
             <MdMenuBook />
             All Books
           </Button>
         </Link>
-        <Link to="/Students">
+        <Link to="/students">
           <Button className="col-12 d-flex gap-2 align-items-center border-0 hoverbutton">
             <MdOutlinePeople />
             Students
           </Button>
         </Link>
+     </div>
+
+
+     <div>
       
-      </div>
+     </div>
+
     </div>
     )
 }
