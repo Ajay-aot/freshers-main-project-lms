@@ -116,7 +116,7 @@ function Search() {
                 <Form.Label>Total copies</Form.Label>
                 <Form.Control
                   name="totalcopies"
-                  type="text"
+                  type="number"
                   // value={adallBooks.totalcopies}
                   onChange={handleInputallbooks}
                   placeholder="5"
@@ -129,7 +129,7 @@ function Search() {
                 <Form.Label>Remaining</Form.Label>
                 <Form.Control
                   name="remaining"
-                  type="text"
+                  type="number"
                   // value={adallBooks.remaining}
                   onChange={handleInputallbooks}
                   placeholder="2"
