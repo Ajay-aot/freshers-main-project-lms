@@ -5,7 +5,7 @@ import React, { useState, useContext } from "react";
 import { adminallbooksContext } from "../App";
 import shortid from "shortid";
 
-function Search() {
+function Search({allbooksearchTerm,setAllbooksearchterm}) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -52,12 +52,17 @@ function Search() {
     
   };
 
+  const handleallbookSearch  = (e) =>{
+    setAllbooksearchterm(e.target.value)
+  }
+
   return (
     <div className="d-flex justify-content-between mt-4">
       <form className="col-6 ">
         <Form.Control
           type="email"
           placeholder="Search by student name or email "
+          onChange={handleallbookSearch}
         />
       </form>
       <Button

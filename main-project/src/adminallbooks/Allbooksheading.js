@@ -1,5 +1,5 @@
 import Content from './Allbookcontent'
-function Allbooksheading(){
+function Allbooksheading({allbooksearchTerm,setAllbooksearchterm}){
     return(
         <div className='listcontent px-4 '>
        
@@ -11,7 +11,9 @@ function Allbooksheading(){
                     <p className=' col-2 m-0 text-center'>Remaining</p>
                     <p className=' col-2 m-0 text-center'>Actions</p>
                 </div>
-        <Content/>
+        <Content
+         allbooksearchTerm={allbooksearchTerm}
+         setAllbooksearchterm={setAllbooksearchterm}/>
         </div>
     )
 }

@@ -8,44 +8,29 @@ import { studentContext } from "../App";
 import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 
-function Content() {
+function Content({searchTerm,setSearchterm}) {
   const [studentArray, setStudentarray] = useContext(studentContext);
 
   // const comment = JSON.parse(localStorage.getItem('studentArray'));
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  // localStorage.setItem('studentsdataKey', JSON.stringify(studentArray));
+  
 
   const [shows, setShowedit] = useState(false);
   const handleCloseedit = () => setShowedit(false);
   const handleShowedit = () => setShowedit(true);
 
   const [getStudentkey, setStudentkey] = useState("");
-  const studentKey = (getStudentkey) => {
-    setStudentkey(getStudentkey);
-  };
-
+ 
   const [getStudentName, setStudentname] = useState("");
-  const studentName = (getStudentName) => {
-    setStudentname(getStudentName);
-  };
 
   const [getStudentmail, setStudentmail] = useState("");
-  const studentMail = (getStudentmail) => {
-    setStudentmail(getStudentmail);
-  };
 
   const [getStudentpassword, setStudentpassword] = useState("");
-  const studentPassword = (getStudentpassword) => {
-    setStudentpassword(getStudentpassword);
-  };
 
   const [getStudentconfirmpassword, setStudentconfirmpassword] = useState("");
-  const studentConfirmpass = (getStudentconfirmpassword) =>{
-    setStudentconfirmpassword(getStudentconfirmpassword)
-  }
-
+ 
   const handlemailEdit = (e) => {
     setStudentmail(e.target.value)
     };
@@ -96,8 +81,15 @@ function Content() {
     setStudentarray(studentArray.filter((item) => deleteId !== item.key));
   };
 
-  return studentArray.map((item) => {
+  return studentArray.filter((value)=>{
+    if(searchTerm ==""){
+        return value
+    }else if(value.name.toLowerCase().includes(searchTerm.toLowerCase())){
+        return value
+    }
+  }).map((item) => {
     return (
+    
       <>
         <div className="d-flex mt-3  items border-bottom list  " key={item.key}>
           <p className="col-5 m-0 px-4">{item.name}</p>
@@ -107,11 +99,11 @@ function Content() {
               className="ash"
               onClick={() => {
                 handleShowedit();
-                studentKey(item.key)
-                studentName(item.name);
-                studentMail(item.email);
-                studentPassword(item.password);
-                studentConfirmpass(item.confirmpassword)
+                setStudentkey(item.key)
+                setStudentname(item.name);
+                setStudentmail(item.email);
+                setStudentpassword(item.password);
+                setStudentconfirmpassword(item.confirmpassword)
               }}
             />
             <BsTrashFill className="trash" onClick={handleShow} />

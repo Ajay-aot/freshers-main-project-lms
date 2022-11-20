@@ -7,7 +7,7 @@ import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
 import Form from "react-bootstrap/Form";
 
-function Content() {
+function Content({allbooksearchTerm,setAllbooksearchterm}) {
   const [adallbooksArray, setAdallbooksarray] =
     useContext(adminallbooksContext);
 
@@ -58,8 +58,8 @@ function Content() {
             return{
                 ...allbooks,
                 booktitle:getAllbookstitle,
-                auther:getAllbooksauther,
-                language:getAllbookslanguage,
+                Auther:getAllbooksauther,
+                languages:getAllbookslanguage,
                 totalcopies:getAllbookstotalcopies,
                 remaining:getAllbooksremaining
         }
@@ -69,9 +69,15 @@ function Content() {
     ))}
 
 
-  localStorage.setItem("allbookdataKey", JSON.stringify(adallbooksArray));
+//   localStorage.setItem("allbookdataKey", JSON.stringify(adallbooksArray));
   
-  return adallbooksArray.map((item) => {
+  return adallbooksArray.filter((value)=>{
+    if(allbooksearchTerm ==""){
+        return value
+    }else if(value.booktitle.toLowerCase().includes(allbooksearchTerm.toLowerCase())){
+        return value
+    }
+  }).map((item) => {
     return (
       <>
         <div
@@ -129,6 +135,8 @@ function Content() {
           </Modal.Footer>
         </Modal>
         {/* ending delete modal */}
+
+
 
         {/* modal for editing */}
         <Modal className="" show={shows} onHide={handleCloseedit}>

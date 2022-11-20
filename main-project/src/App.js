@@ -10,13 +10,13 @@ import Adminallbooks from './adminallbooks/Adminallbooks'
 import ViewMainpage from './viewComponent/viewMainpage';
 
 const studentContext = createContext()
-// const adminissuedBook = createContext()
+const adminissuedBook = createContext()
 const adminallbooksContext = createContext()
 
 function App() {
 
   const [studentArray,setStudentarray] = useState([])
-  // const [adissuedBooksarray,setAdissuedbooksarray] = useState([])
+  const [adissuedBooksarray,setAdissuedbooksarray] = useState([])
   const [adallbooksArray,setAdallbooksarray] = useState([])
 
   const [Authentication,setAuthentication] = useState(false)
@@ -26,7 +26,7 @@ function App() {
   }
   return (
     <div className="App">
-      {/* <adminissuedBook.Provider value={[adissuedBooksarray,setAdissuedbooksarray]}> */}
+      <adminissuedBook.Provider value={[adissuedBooksarray,setAdissuedbooksarray]}>
       <adminallbooksContext.Provider value={[adallbooksArray,setAdallbooksarray]}>
            <studentContext.Provider value={[studentArray,setStudentarray]}>
            
@@ -42,7 +42,7 @@ function App() {
            
             </studentContext.Provider>
            </adminallbooksContext.Provider>
-        {/* </adminissuedBook.Provider> */}
+        </adminissuedBook.Provider>
     
     
     </div>
@@ -51,6 +51,6 @@ function App() {
 
 export default App;
 export {studentContext}
-// export {adminissuedBook}
+export {adminissuedBook}
 export {adminallbooksContext}
 

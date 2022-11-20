@@ -1,5 +1,5 @@
 import Content from './content'
-function Heading(){
+function Heading({searchTerm,setSearchterm}){
     return(
         <div className='listcontent px-4 '>
        
@@ -8,7 +8,9 @@ function Heading(){
                     <p className='col-3  m-0'>Email</p>
                     <p className='col-4  m-0 text-center'>Action</p>
                 </div>
-        <Content/>
+        <Content
+         searchTerm={searchTerm}
+         setSearchterm={setSearchterm}/>
         </div>
     )
 }
