@@ -127,7 +127,7 @@ function Search({allbooksearchTerm,setAllbooksearchterm}) {
                   type="number"
                   // value={adallBooks.totalcopies}
                   onChange={handleInputallbooks}
-                  placeholder="5"
+                  placeholder="0"
                 />
               </Form.Group>
               <Form.Group
@@ -140,7 +140,7 @@ function Search({allbooksearchTerm,setAllbooksearchterm}) {
                   type="number"
                   // value={adallBooks.remaining}
                   onChange={handleInputallbooks}
-                  placeholder="2"
+                  placeholder="0"
                 />
               </Form.Group>
             </div>

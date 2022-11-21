@@ -69,7 +69,7 @@ function Content({allbooksearchTerm,setAllbooksearchterm}) {
     ))}
 
 
-//   localStorage.setItem("allbookdataKey", JSON.stringify(adallbooksArray));
+
   
   return adallbooksArray.filter((value)=>{
     if(allbooksearchTerm ==""){

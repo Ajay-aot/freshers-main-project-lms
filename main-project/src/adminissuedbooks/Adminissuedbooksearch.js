@@ -43,6 +43,7 @@ function Search() {
         Issuedate: adissuedBooks.Issuedate,
         Duedate: adissuedBooks.Duedate,
         fine: adissuedBooks.Fine,
+        return:false
       },
     ]);
     // console.log(studentArray)
@@ -79,6 +80,7 @@ function Search() {
             >
               <option>Open this select menu</option>
               {adallbooksArray.map((item) => {
+                if(item.remaining != 0)
                 return <option value={item.key}>{item.booktitle}</option>;
               })}
             </Form.Select>
