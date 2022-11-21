@@ -2,8 +2,8 @@
 import './App.css';
 import Adminstudent from './adminstudents/adminstudents'
 import Loginform from './Loginform';
-import { createContext, useState } from 'react';
-import {BrowserRouter as Router,Routes,Route} from "react-router-dom"
+import { createContext,useState,useEffect } from 'react';
+import {BrowserRouter as Router,Routes,Route, json} from "react-router-dom"
 // import Mainfunction from './adminstudents/mainpage'
 import Adminissuedbooks from './adminissuedbooks/Adminissuedbooks'
 import Adminallbooks from './adminallbooks/Adminallbooks'
@@ -15,9 +15,52 @@ const adminallbooksContext = createContext()
 
 function App() {
 
-  const [studentArray,setStudentarray] = useState([])
-  const [adissuedBooksarray,setAdissuedbooksarray] = useState([])
-  const [adallbooksArray,setAdallbooksarray] = useState([])
+  const getLocalStudent = () =>{
+    let studentList = localStorage.getItem('studentArray')
+    if(studentList){
+      return JSON.parse(localStorage.getItem('studentArray'))
+    }else{
+      return []
+    }
+  }
+  const getAllbooks = () =>{
+    let allbooksList = localStorage.getItem('allbooksArray')
+    if(allbooksList){
+      return JSON.parse(localStorage.getItem('allbooksArray'))
+     
+    }else{
+      return []
+    }
+  }
+
+  const getLocalissuedbooks = () =>{
+    let issuedbooksList = localStorage.getItem('issuedbooksArray')
+    if(issuedbooksList){
+      return JSON.parse(localStorage.getItem('issuedbooksArray'))
+    }else{
+      return []
+    }
+  }
+
+  const [studentArray,setStudentarray] = useState(getLocalStudent())
+  const [adissuedBooksarray,setAdissuedbooksarray] = useState(getLocalissuedbooks())
+  const [adallbooksArray,setAdallbooksarray] = useState(getAllbooks())
+  //useeffect fro local storage 
+  useEffect(()=>{
+    localStorage.setItem('studentArray',JSON.stringify(studentArray))
+  },[studentArray])
+
+  useEffect(()=>{
+    localStorage.setItem('allbooksArray',JSON.stringify(adallbooksArray))
+  },[adallbooksArray])
+
+  useEffect(()=>{
+    localStorage.setItem('issuedbooksArray',JSON.stringify(adissuedBooksarray))
+  },[adissuedBooksarray])
+
+
+
+
 
   const [Authentication,setAuthentication] = useState(false)
   
