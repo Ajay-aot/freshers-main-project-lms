@@ -13,6 +13,7 @@ function Search({ searchTerm, setSearchterm }) {
   const [studentArray, setStudentarray] = useContext(studentContext);
 
   const [students, setStudents] = useState({
+    key:"",
     name: "",
     email: "",
     password: "",
@@ -32,7 +33,7 @@ function Search({ searchTerm, setSearchterm }) {
     console.log(studentArray);
 
     setStudents({
-      key: "",
+     
       name: "",
       email: "",
       password: "",

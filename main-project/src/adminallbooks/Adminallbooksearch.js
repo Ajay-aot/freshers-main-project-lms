@@ -14,6 +14,7 @@ function Search({allbooksearchTerm,setAllbooksearchterm}) {
     useContext(adminallbooksContext);
 
   const [adallBooks, setAdallBooks] = useState({
+    key:"",
     booktitle: "",
     auther: "",
     language: "",
@@ -43,6 +44,7 @@ function Search({allbooksearchTerm,setAllbooksearchterm}) {
     console.log(adallBooks);
     
     setAdallBooks({
+    
     booktitle: "",
     auther: "",
     language: "",

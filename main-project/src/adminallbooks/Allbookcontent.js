@@ -78,12 +78,14 @@ function Content({allbooksearchTerm,setAllbooksearchterm}) {
         return value
     }
   }).map((item) => {
+    // console.log(item.key)
     return (
       <>
         <div
           className="d-flex mt-3  items border-bottom list px-4"
           key={item.key}
         >
+          
           <p className="col-2 ">{item.booktitle}</p>
           <p className="col-2 m-0 text-center">{item.Auther}</p>
           <p className="col-2 m-0 text-center">{item.languages}</p>
