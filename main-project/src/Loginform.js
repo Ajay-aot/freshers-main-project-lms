@@ -2,6 +2,8 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import React, { useState } from "react";
 import Sidebar from "./Sidebar";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Loginform({ authfun }) {
   const adminUser = {
@@ -23,7 +25,8 @@ export default function Loginform({ authfun }) {
       authfun();
       console.log("matched");
     } else {
-        alert("please Email and Password")
+        toast.error("Incorrect mail or password",{position:"top-center"})
+        // alert("please Email and Password")
       console.log("not matching");
     }
   };
@@ -77,6 +80,7 @@ export default function Loginform({ authfun }) {
           </Form>
         </div>
       </div>
+      <ToastContainer/>
     </>
   );
 }

@@ -32,7 +32,7 @@ function Issuedcontent(){
                
                 if(item.key == booksTitle){
                     // adallbooksArray.remaining =  adallbooksArray.remaining + 1
-                    item.remaining = item.remaining + 1
+                    item.remaining = item.remaining +1
 
                 }
                 return item
