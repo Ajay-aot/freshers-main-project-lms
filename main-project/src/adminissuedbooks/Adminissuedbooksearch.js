@@ -10,11 +10,9 @@ function Search() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [adissuedBooksarray, setAdissuedbooksarray] =
-    useContext(adminissuedBook);
+  const [adissuedBooksarray, setAdissuedbooksarray] = useContext(adminissuedBook);
 
-  const [adallbooksArray, setAdallbooksarray] =
-    useContext(adminallbooksContext);
+  const [adallbooksArray, setAdallbooksarray] = useContext(adminallbooksContext);
 
   const [studentArray, setStudentarray] = useContext(studentContext);
 
@@ -26,7 +24,15 @@ function Search() {
     Duedate: "",
     Fine: "10",
   });
+  const [booksissuedTitle,setBooksissuedtitle] = useState("")
 
+  const handleIssuedbookstitle = (e)=>{
+    setBooksissuedtitle(e.target.value)
+    let name = e.target.name;
+    let value = e.target.value;
+    setAdissuedBooks({ ...adissuedBooks, [name]: value })
+   
+  }
   const handleIssuedbooks = (e) => {
     let name = e.target.name;
     let value = e.target.value;
@@ -48,6 +54,36 @@ function Search() {
     ]);
     // console.log(studentArray)
   };
+
+
+
+
+
+const  handleRemaining =()=>{ 
+  console.log("hai")
+
+  setAdallbooksarray(adallbooksArray.map((books)=>{
+    // console.log(books.remaining)
+    if(books.key === booksissuedTitle){
+       
+        // item.remaining = ++item.remaining 
+    return{...books,
+      remaining : books.remaining -1
+
+    }
+    }
+    return (books)
+}) )
+
+
+}
+const  handleFine = ()=>{
+  console.log("heeeeeeeey")
+}
+ 
+
+
+
 
   return (
     <div className="d-flex justify-content-between mt-4">
@@ -76,9 +112,9 @@ function Search() {
               aria-label="Default select example"
               className="mb-3"
               name="booktitle"
-              onChange={handleIssuedbooks}
+              onChange={handleIssuedbookstitle}
             >
-              <option>Open this select menu</option>
+              <option> select title</option>
               {adallbooksArray.map((item) => {
                 if(item.remaining != 0)
                 return <option value={item.key}>{item.booktitle}</option>;
@@ -92,7 +128,7 @@ function Search() {
               name="Studentname"
               onChange={handleIssuedbooks}
             >
-              <option>Open this select menu</option>
+              <option>select name</option>
               {studentArray.map((item) => {
                 return <option value={item.key}>{item.name}</option>;
               })}
@@ -125,6 +161,9 @@ function Search() {
             onClick={() => {
               handleClose();
               handleAddissuedbook();
+              handleRemaining();
+              handleFine();
+             
             }}
           >
             Issue Book

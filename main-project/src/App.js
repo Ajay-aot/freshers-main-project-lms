@@ -78,6 +78,7 @@ function App() {
                 <Route path="/" element={ !Authentication ?( <Loginform authfun={Authfun} /> ) : (<Adminissuedbooks/>)}/>
                 <Route path="/students" element={<Adminstudent/>}/>
                 <Route path="/allbooks" element={<Adminallbooks/>}/>
+                <Route path="/issuedbooks" element={<Adminissuedbooks/>}/>
                 <Route path="/viwestudent" element={<ViewMainpage/>}/>
 
               </Routes>

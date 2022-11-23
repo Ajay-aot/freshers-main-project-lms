@@ -110,11 +110,8 @@ function Search({ searchTerm, setSearchterm }) {
                 placeholder="Eg: John Doe"
                 autoFocus
               />
-              {error && !students.name ? (
-                <p className="errormsg">Please enter Name</p>
-              ) : (
-                ""
-              )}
+              {error && !students.name ?  <p className="errormsg">Please enter Name</p>:""}
+              
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Email</Form.Label>
@@ -126,11 +123,8 @@ function Search({ searchTerm, setSearchterm }) {
                 placeholder="Eg: johndoe@gmail.com"
                 // autoFocus
               />
-              {error && !students.email ? (
-                <p className="errormsg">Please enter Email</p>
-              ) : (
-                ""
-              )}
+              {error && !students.email ?  <p className="errormsg">Please enter Email</p>:""}
+              
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Password</Form.Label>
@@ -142,11 +136,8 @@ function Search({ searchTerm, setSearchterm }) {
                 placeholder="********"
                 // autoFocus
               />
-              {error && !students.password ? (
-                <p className="errormsg">Please enter password</p>
-              ) : (
-                ""
-              )}
+              {error && !students.password ? <p className="errormsg">Please enter password</p>:""}
+             
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Confirm Password</Form.Label>
@@ -158,11 +149,7 @@ function Search({ searchTerm, setSearchterm }) {
                 placeholder="********"
                 // autoFocus
               />
-              {error && students.password != students.confirmpassword ? (
-                <p className="errormsg">Please confirm password</p>
-              ) : (
-                ""
-              )}
+              {error && students.password != students.confirmpassword ? <p className="errormsg">Please confirm password</p>:""}
             </Form.Group>
           </Form>
         </Modal.Body>
@@ -175,6 +162,7 @@ function Search({ searchTerm, setSearchterm }) {
             className="border-0 hoverbutton"
             onClick={() => {
               handleAddstudent();
+              setError(false);
             }}
           >
             Add student

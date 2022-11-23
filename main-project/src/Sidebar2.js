@@ -12,8 +12,9 @@ export default function Orangesidebar() {
 
       <img className="ps-4 pt-5" src={logo2} alt="logo2"/>
         <div className="d-flex flex-column px-3 gap-3">
-        <Link to="/">
+        <Link to="/issuedbooks">
           <Button className="mt-5 col-12 d-flex gap-2 align-items-center border-0 hoverbutton">
+
             <MdTaskAlt />
             Issued Books
           </Button>

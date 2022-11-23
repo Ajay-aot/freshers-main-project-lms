@@ -19,7 +19,7 @@ function Search({allbooksearchTerm,setAllbooksearchterm}) {
     auther: "",
     language: "",
     totalcopies: "",
-    remaining: "",
+    remaining:""
   });
 
   const handleInputallbooks = (e) => {

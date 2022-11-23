@@ -4,6 +4,7 @@ import { adminissuedBook,adminallbooksContext,studentContext } from '../App'
 import { useContext } from 'react';
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { RiCreativeCommonsSaLine } from "react-icons/ri";
 
 
 
@@ -26,16 +27,17 @@ function Issuedcontent(){
                     
                     item.return = true 
                     }
-                    return item
+                    // console.log("hi")
+                    return (item)
                 })
             const remainingCount = adallbooksArray.map((item)=>{
-               
+                // console.log(item.remaining)
                 if(item.key == booksTitle){
-                    // adallbooksArray.remaining =  adallbooksArray.remaining + 1
-                    item.remaining = item.remaining +1
-
+                   
+                    item.remaining = ++item.remaining 
+                
                 }
-                return item
+                return (item)
             })    
              setAdissuedbooksarray(Returning)
              setAdallbooksarray(remainingCount)
@@ -57,8 +59,8 @@ function Issuedcontent(){
                         {adallbooksArray.map((allbooks)=>{
                              //console.log(item.Booktitle)
                             if(allbooks.key == item.Booktitle){
-                                console.log(allbooks.key)
-                                console.log(item.Booktitle)
+                                // console.log(allbooks.key)
+                                // console.log(item.Booktitle)
                                 return( <p className="col-2 ">{allbooks.booktitle}</p>)
                               
                             }
@@ -75,7 +77,10 @@ function Issuedcontent(){
                         
                         <p className="col-2 m-0  text-start ">{item.Issuedate}</p>
                         <p className="col-2 m-0  text-start">{item.Duedate}</p>
-                        <p className="col-2 m-0  text-start">{item.fine}</p>
+                        
+                             <p className="col-2 m-0  text-start">-</p>  
+                        
+                       
                         <div className="d-flex gap-3  mt-1 ash justify-content-center">
                         <MdOutlineAssignmentReturn onClick={()=>{handleShow();setReturnkey(item.key);setBookstitle(item.Booktitle)}}/>
                         </div>  
