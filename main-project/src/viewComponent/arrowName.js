@@ -8,11 +8,14 @@ function ArrowName({id}) {
   
 
   return (
-    <div className='ms-5 mt-3 d-flex border-bottom'>
-    <div >
+    <div className='ms-5 mt-3 d-flex border-bottom gap-1 background' >
+    <div className=''>
     <IoIosArrowBack/>
     </div>
-    <p>Students/{studentArray.map((item)=>{
+    <div className='d-flex gap-1'>
+    <p>Students/</p>
+      
+    <p className='viewname'>{studentArray.map((item)=>{
     
     
     if(item.key == id){
@@ -20,6 +23,7 @@ function ArrowName({id}) {
             
     }
     })}</p>
+    </div>
     </div>)
 
   

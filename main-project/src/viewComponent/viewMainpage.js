@@ -12,7 +12,7 @@ import { useParams } from 'react-router-dom';
 function ViewMainpage() {
   let { id } = useParams();
   return (
-    <div className='d-flex'>
+    <div className='d-flex background'>
     <Orangesidebar/>
     <div className='studentviewpage'>
   

@@ -6,7 +6,7 @@ function IndividualInfo({id}) {
     const [studentArray, setStudentarray] = useContext(studentContext);
 
   return (
-    <div className='border mx-5 mt-4 d-flex justify-content-between p-3'>
+    <div className='border mx-5 mt-4 d-flex justify-content-between p-3 bg-white ' style={{borderRadius:'10px'}}>
         <div>
             <p className='list'>{studentArray.map((item)=>{
     

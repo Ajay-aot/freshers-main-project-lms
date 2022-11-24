@@ -1,5 +1,5 @@
 import ViewContent from './viewContent'
-function ViewHeading(){
+function ViewHeading({id}){
     return(
         <div className='listcontent px-5 '>
         
@@ -12,7 +12,8 @@ function ViewHeading(){
                     <p className='col-2 m-0 text-start'>Fine<br></br>(Rs.10 per day)</p>
                     
                 </div>
-        <ViewContent/>
+        <ViewContent
+        id={id}/>
         </div>
     )
 }
