@@ -79,7 +79,7 @@ function App() {
                 <Route path="/students" element={<Adminstudent/>}/>
                 <Route path="/allbooks" element={<Adminallbooks/>}/>
                 <Route path="/issuedbooks" element={<Adminissuedbooks/>}/>
-                <Route path="/viwestudent" element={<ViewMainpage/>}/>
+                <Route path="/studentdetails/:id" element={<ViewMainpage/>}/>
 
               </Routes>
            </Router>

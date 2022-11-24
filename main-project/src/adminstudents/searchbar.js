@@ -27,7 +27,7 @@ function Search({ searchTerm, setSearchterm }) {
     console.log(students);
   };
   const handleAddstudent = () => {
-    // localStorage.setItem('studentsdataKey', JSON.stringify(studentArray));
+    
     checkingPassword();
 
     console.log(studentArray);

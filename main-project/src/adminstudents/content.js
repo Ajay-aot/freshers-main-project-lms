@@ -107,7 +107,7 @@ function Content({searchTerm,setSearchterm}) {
               }}
             />
             <BsTrashFill className="trash" onClick={handleShow} />
-            <Link to="/viwestudent">
+            <Link to= {`/studentdetails/${item.key}`}>
               <BsEye className="ash mb-3" />
             </Link>
           </div>

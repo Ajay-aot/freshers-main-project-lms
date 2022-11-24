@@ -1,14 +1,17 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext ,useEffect } from "react";
 import { adminissuedBook, adminallbooksContext, studentContext } from "../App";
 import shortid from "shortid";
 
 function Search() {
+  const [fine,setFine] = useState("")
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+ 
 
   const [adissuedBooksarray, setAdissuedbooksarray] = useContext(adminissuedBook);
 
@@ -22,9 +25,11 @@ function Search() {
     Studentname: "",
     Issuedate: "",
     Duedate: "",
-    Fine: "10",
+    
+    
   });
   const [booksissuedTitle,setBooksissuedtitle] = useState("")
+  const [booksissuedDuedate,setBooksissuedduedate] = useState("")
 
   const handleIssuedbookstitle = (e)=>{
     setBooksissuedtitle(e.target.value)
@@ -38,8 +43,18 @@ function Search() {
     let value = e.target.value;
     setAdissuedBooks({ ...adissuedBooks, [name]: value });
     //  console.log(adissuedBooks)
-  };
-  const handleAddissuedbook = () => {
+  }
+  const handleIssuedbooksduedate = (e)=>{
+    setBooksissuedduedate(e.target.value)
+    let name = e.target.name;
+    let value = e.target.value;
+    setAdissuedBooks({ ...adissuedBooks, [name]: value })
+   
+  }
+   
+
+    const handleAddissuedbook = () => {
+
     setAdissuedbooksarray([
       ...adissuedBooksarray,
       {
@@ -48,8 +63,9 @@ function Search() {
         Student: adissuedBooks.Studentname,
         Issuedate: adissuedBooks.Issuedate,
         Duedate: adissuedBooks.Duedate,
-        fine: adissuedBooks.Fine,
-        return:false
+        Fine: fine,
+        return:false,
+        
       },
     ]);
     // console.log(studentArray)
@@ -77,9 +93,29 @@ const  handleRemaining =()=>{
 
 
 }
+
+
 const  handleFine = ()=>{
-  console.log("heeeeeeeey")
+  console.log("haaaaaaaaaaaaaai")
+   const today = new Date()
+   const duedate = booksissuedDuedate
+  //  console.log(today)
+  // //  console.log(dueDate)
+  // To calculate the no. of days between two dates
+    const Difference =  Math.floor((today.getTime() - new Date(duedate))/ (1000 * 3600 * 24))
+    console.log(Difference)
+    setFine(Math.round(Difference*10))
+    console.log(fine)
+    if(fine < 0){
+      setFine("-")
+    }
+    
+    
+    
 }
+useEffect(() =>{
+  handleFine();
+})
  
 
 
@@ -146,7 +182,7 @@ const  handleFine = ()=>{
               <Form.Control
                 name="Duedate"
                 type="date"
-                onChange={handleIssuedbooks}
+                onChange={handleIssuedbooksduedate}
               />
             </Form.Group>
           </Form>
@@ -162,7 +198,7 @@ const  handleFine = ()=>{
               handleClose();
               handleAddissuedbook();
               handleRemaining();
-              handleFine();
+              // handleFine();
              
             }}
           >

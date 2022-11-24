@@ -1,11 +1,27 @@
 import React from 'react'
+import { useContext } from 'react'
+import { studentContext } from "../App";
 
-function IndividualInfo() {
+function IndividualInfo({id}) {
+    const [studentArray, setStudentarray] = useContext(studentContext);
+
   return (
     <div className='border mx-5 mt-4 d-flex justify-content-between p-3'>
         <div>
-            <p className='list'>Nitha Samuel</p>
-            <p>nithasamuel@gmail.com</p>
+            <p className='list'>{studentArray.map((item)=>{
+    
+    
+      if(item.key == id){
+      return(item.name )
+            
+      }})}</p>
+            <p>{studentArray.map((item)=>{
+    
+    
+      if(item.key == id){
+      return(item.email )
+            
+      }})}</p>
         </div>
         <div className='border-start ps-3'>
             <div className='d-flex gap-3'>

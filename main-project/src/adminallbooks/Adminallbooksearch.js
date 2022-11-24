@@ -29,7 +29,20 @@ function Search({allbooksearchTerm,setAllbooksearchterm}) {
     setAdallBooks({ ...adallBooks, [name]: value });
     console.log(adallBooks);
   };
+  
+  const [error, setError] = useState(false);
+
   const handleAddallbooks = () => {
+    if(!adallBooks.booktitle||
+      !adallBooks.auther||
+      !adallBooks.language||
+      !adallBooks.totalcopies||
+      !adallBooks.remaining)
+      {
+        setError(true);
+      }
+    else{
+      
     setAdallbooksarray([
       ...adallbooksArray,
       {
@@ -41,6 +54,8 @@ function Search({allbooksearchTerm,setAllbooksearchterm}) {
         remaining: adallBooks.remaining,
       },
     ]);
+  }
+
     console.log(adallBooks);
     
     setAdallBooks({
@@ -91,6 +106,7 @@ function Search({allbooksearchTerm,setAllbooksearchterm}) {
                 placeholder="Eg: Pride and Prejudice"
                 autoFocus
               />
+              {error && !adallBooks.booktitle ?  <p className="errormsg">Please enter Name</p>:""}
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Auther</Form.Label>
@@ -101,6 +117,7 @@ function Search({allbooksearchTerm,setAllbooksearchterm}) {
                 onChange={handleInputallbooks}
                 placeholder="Eg: Jane Austen"
               />
+               {error && !adallBooks.auther ?  <p className="errormsg">Please enter Auther</p>:""}
             </Form.Group>
             <Form.Group>
             <Form.Label>Language</Form.Label>
@@ -114,7 +131,7 @@ function Search({allbooksearchTerm,setAllbooksearchterm}) {
                 <option value="Spanish">Spanish</option>
                 <option value="Italian">Italian</option>
             </Form.Select>
-
+            {error && !adallBooks.language ?  <p className="errormsg">Please enter Auther</p>:""}
             </Form.Group>
             <div className="d-flex gap-3">
               <Form.Group
@@ -129,6 +146,7 @@ function Search({allbooksearchTerm,setAllbooksearchterm}) {
                   onChange={handleInputallbooks}
                   placeholder="0"
                 />
+                {error && !adallBooks.totalcopies ?  <p className="errormsg">Please enter Totalcopies</p>:""}
               </Form.Group>
               <Form.Group
                 className="mb-3"
@@ -142,6 +160,7 @@ function Search({allbooksearchTerm,setAllbooksearchterm}) {
                   onChange={handleInputallbooks}
                   placeholder="0"
                 />
+                {error &&  !adallBooks.remaining ?  <p className="errormsg">Please enter Remaining</p>:""}
               </Form.Group>
             </div>
           </Form>
@@ -156,6 +175,7 @@ function Search({allbooksearchTerm,setAllbooksearchterm}) {
             onClick={() => {
               handleClose();
               handleAddallbooks();
+              setError(false);
             }}
           >
             Add Book

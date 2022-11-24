@@ -19,17 +19,32 @@ function Issuedcontent(){
     const [adissuedBooksarray,setAdissuedbooksarray] = useContext(adminissuedBook)
     const [adallbooksArray, setAdallbooksarray] = useContext(adminallbooksContext);
     const [studentArray, setStudentarray] = useContext(studentContext);
+    const [returnDateofbooks,setRetrundate] = useState("")
 
         const handleReturn = ()=> {
             
             const Returning = adissuedBooksarray.map((item)=>{
                     if(item.key == returnKey){
                     
-                    item.return = true 
+                    item.return = true
+
+                    const returnDate  = new Date()
+                    // console.log(returnDate)
+                    setRetrundate(returnDate)
+                    
+                    setAdissuedbooksarray(...adissuedBooksarray,{returnDate:returnDateofbooks})
+                    
+
+
+
                     }
+
                     // console.log("hi")
                     return (item)
                 })
+
+           
+
             const remainingCount = adallbooksArray.map((item)=>{
                 // console.log(item.remaining)
                 if(item.key == booksTitle){
@@ -78,7 +93,7 @@ function Issuedcontent(){
                         <p className="col-2 m-0  text-start ">{item.Issuedate}</p>
                         <p className="col-2 m-0  text-start">{item.Duedate}</p>
                         
-                             <p className="col-2 m-0  text-start">-</p>  
+                             <p className="col-2 m-0  text-start">{item.Fine}</p>  
                         
                        
                         <div className="d-flex gap-3  mt-1 ash justify-content-center">
