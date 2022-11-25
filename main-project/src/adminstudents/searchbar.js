@@ -13,7 +13,7 @@ function Search({ searchTerm, setSearchterm }) {
   const [studentArray, setStudentarray] = useContext(studentContext);
 
   const [students, setStudents] = useState({
-    key:"",
+    key: "",
     name: "",
     email: "",
     password: "",
@@ -27,13 +27,13 @@ function Search({ searchTerm, setSearchterm }) {
     console.log(students);
   };
   const handleAddstudent = () => {
-    
+
     checkingPassword();
 
     console.log(studentArray);
 
     setStudents({
-     
+
       name: "",
       email: "",
       password: "",
@@ -54,9 +54,6 @@ function Search({ searchTerm, setSearchterm }) {
     ) {
       setError(true);
     }
-    // else if(students.confirmpassword !== students.password){
-    //   alert("Missmatching passwords")
-    //   }
     else {
       handleClose();
       setStudentarray([
@@ -110,8 +107,8 @@ function Search({ searchTerm, setSearchterm }) {
                 placeholder="Eg: John Doe"
                 autoFocus
               />
-              {error && !students.name ?  <p className="errormsg">Please enter Name</p>:""}
-              
+              {error && !students.name ? <p className="errormsg">Please enter Name</p> : ""}
+
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Email</Form.Label>
@@ -121,10 +118,10 @@ function Search({ searchTerm, setSearchterm }) {
                 // value={students.email}
                 onChange={handleInput}
                 placeholder="Eg: johndoe@gmail.com"
-                // autoFocus
+              // autoFocus
               />
-              {error && !students.email ?  <p className="errormsg">Please enter Email</p>:""}
-              
+              {error && !students.email ? <p className="errormsg">Please enter Email</p> : ""}
+
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Password</Form.Label>
@@ -134,10 +131,10 @@ function Search({ searchTerm, setSearchterm }) {
                 // value={students.password}
                 onChange={handleInput}
                 placeholder="********"
-                // autoFocus
+              // autoFocus
               />
-              {error && !students.password ? <p className="errormsg">Please enter password</p>:""}
-             
+              {error && !students.password ? <p className="errormsg">Please enter password</p> : ""}
+
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Confirm Password</Form.Label>
@@ -147,9 +144,9 @@ function Search({ searchTerm, setSearchterm }) {
                 // value={students.confirmpassword}
                 onChange={handleInput}
                 placeholder="********"
-                // autoFocus
+              // autoFocus
               />
-              {error && students.password != students.confirmpassword ? <p className="errormsg">Please confirm password</p>:""}
+              {error && students.password != students.confirmpassword ? <p className="errormsg">Please confirm password</p> : ""}
             </Form.Group>
           </Form>
         </Modal.Body>

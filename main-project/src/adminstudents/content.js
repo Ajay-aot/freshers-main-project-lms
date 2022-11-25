@@ -8,21 +8,21 @@ import { studentContext } from "../App";
 import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 
-function Content({searchTerm,setSearchterm}) {
+function Content({ searchTerm, setSearchterm }) {
   const [studentArray, setStudentarray] = useContext(studentContext);
 
   // const comment = JSON.parse(localStorage.getItem('studentArray'));
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  
+
 
   const [shows, setShowedit] = useState(false);
   const handleCloseedit = () => setShowedit(false);
   const handleShowedit = () => setShowedit(true);
 
   const [getStudentkey, setStudentkey] = useState("");
- 
+
   const [getStudentName, setStudentname] = useState("");
 
   const [getStudentmail, setStudentmail] = useState("");
@@ -30,10 +30,10 @@ function Content({searchTerm,setSearchterm}) {
   const [getStudentpassword, setStudentpassword] = useState("");
 
   const [getStudentconfirmpassword, setStudentconfirmpassword] = useState("");
- 
+
   const handlemailEdit = (e) => {
     setStudentmail(e.target.value)
-    };
+  };
 
   const handlenameEdit = (e) => {
     setStudentname(e.target.value);
@@ -46,30 +46,30 @@ function Content({searchTerm,setSearchterm}) {
   };
 
 
-  const updateStudents = () =>{
+  const updateStudents = () => {
     // newPasswordcheck()
     setStudentarray(
-        studentArray.map((students) => {
-            
-            if(students.key === getStudentkey){
-                if(getStudentpassword !== getStudentconfirmpassword){
-                    alert("Password missmatching")
-                }
-                else{
-              return{
-                ...students,
-                name:getStudentName,
-                email:getStudentmail,
-                password:getStudentpassword,
-                confirmpassword:getStudentconfirmpassword,
-              }
-            }
-            }
+      studentArray.map((students) => {
 
-            return students
+        if (students.key === getStudentkey) {
+          if (getStudentpassword !== getStudentconfirmpassword) {
+            alert("Password missmatching")
+          }
+          else {
+            return {
+              ...students,
+              name: getStudentName,
+              email: getStudentmail,
+              password: getStudentpassword,
+              confirmpassword: getStudentconfirmpassword,
+            }
+          }
         }
 
-        )
+        return students
+      }
+
+      )
     )
   }
 
@@ -81,15 +81,15 @@ function Content({searchTerm,setSearchterm}) {
     setStudentarray(studentArray.filter((item) => deleteId !== item.key));
   };
 
-  return studentArray.filter((value)=>{
-    if(searchTerm ==""){
-        return value
-    }else if(value.name.toLowerCase().includes(searchTerm.toLowerCase())){
-        return value
+  return studentArray.filter((value) => {
+    if (searchTerm == "") {
+      return value
+    } else if (value.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+      return value
     }
   }).map((item) => {
     return (
-    
+
       <>
         <div className="d-flex mt-3  items border-bottom list  " key={item.key}>
           <p className="col-5 m-0 px-4">{item.name}</p>
@@ -107,7 +107,7 @@ function Content({searchTerm,setSearchterm}) {
               }}
             />
             <BsTrashFill className="trash" onClick={handleShow} />
-            <Link to= {`/studentdetails/${item.key}`}>
+            <Link to={`/studentdetails/${item.key}`}>
               <BsEye className="ash mb-3" />
             </Link>
           </div>
@@ -177,7 +177,7 @@ function Content({searchTerm,setSearchterm}) {
                   value={getStudentmail}
                   onChange={handlemailEdit}
                   placeholder="Eg: johndoe@gmail.com"
-                  // autoFocus
+                // autoFocus
                 />
               </Form.Group>
               <Form.Group
@@ -191,7 +191,7 @@ function Content({searchTerm,setSearchterm}) {
                   value={getStudentpassword}
                   onChange={handlepasswordEdit}
                   placeholder="********"
-                  // autoFocus
+                // autoFocus
                 />
               </Form.Group>
               <Form.Group
@@ -205,7 +205,7 @@ function Content({searchTerm,setSearchterm}) {
                   value={getStudentconfirmpassword}
                   onChange={handleconfirmpasswordEdit}
                   placeholder="********"
-                  // autoFocus
+                // autoFocus
                 />
               </Form.Group>
             </Form>

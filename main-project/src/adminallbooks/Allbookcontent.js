@@ -7,34 +7,34 @@ import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
 import Form from "react-bootstrap/Form";
 
-function Content({allbooksearchTerm,setAllbooksearchterm}) {
+function Content({ allbooksearchTerm, setAllbooksearchterm }) {
   const [adallbooksArray, setAdallbooksarray] =
     useContext(adminallbooksContext);
 
-  const [getAllbookskey,setGetallbookskey] = useState("") 
-  const [getAllbookstitle,setGetallbookstitle] = useState("")  
-  const [getAllbooksauther,setGetallbooksauther] = useState("") 
-  const [getAllbookslanguage,setGetallbookslanguage] = useState("")
-  const [getAllbookstotalcopies,setGetallbookstotalcopies] = useState("")
-  const [getAllbooksremaining,setGetallbooksremaining] = useState("")
+  const [getAllbookskey, setGetallbookskey] = useState("")
+  const [getAllbookstitle, setGetallbookstitle] = useState("")
+  const [getAllbooksauther, setGetallbooksauther] = useState("")
+  const [getAllbookslanguage, setGetallbookslanguage] = useState("")
+  const [getAllbookstotalcopies, setGetallbookstotalcopies] = useState("")
+  const [getAllbooksremaining, setGetallbooksremaining] = useState("")
 
- const handleallbookstitleEdit = (e) =>{
+  const handleallbookstitleEdit = (e) => {
     setGetallbookstitle(e.target.value)
- }
- const handleallbooksautherEdit = (e) =>{
+  }
+  const handleallbooksautherEdit = (e) => {
     setGetallbooksauther(e.target.value)
- }
+  }
 
- const handleallbookslanguageEdit = (e) =>{
+  const handleallbookslanguageEdit = (e) => {
     setGetallbookslanguage(e.target.value)
- }
+  }
 
- const handleallbookstotalcopiesEdit = (e) =>{
+  const handleallbookstotalcopiesEdit = (e) => {
     setGetallbookstotalcopies(e.target.value)
- }
- const handleallbooksremainingEdit = (e) =>{
+  }
+  const handleallbooksremainingEdit = (e) => {
     setGetallbooksremaining(e.target.value)
- }
+  }
 
 
   const [show, setShow] = useState(false);
@@ -50,32 +50,33 @@ function Content({allbooksearchTerm,setAllbooksearchterm}) {
     setAdallbooksarray(adallbooksArray.filter((item) => deleteId !== item.key));
   };
 
- const updateAddallbooks = () =>{
+  const updateAddallbooks = () => {
     // console.log("hai")
     setAdallbooksarray(
-    adallbooksArray.map((allbooks) => {
-        if(allbooks.key === getAllbookskey ){
-            return{
-                ...allbooks,
-                booktitle:getAllbookstitle,
-                Auther:getAllbooksauther,
-                languages:getAllbookslanguage,
-                totalcopies:getAllbookstotalcopies,
-                remaining:getAllbooksremaining
+      adallbooksArray.map((allbooks) => {
+        if (allbooks.key === getAllbookskey) {
+          return {
+            ...allbooks,
+            booktitle: getAllbookstitle,
+            Auther: getAllbooksauther,
+            languages: getAllbookslanguage,
+            totalcopies: getAllbookstotalcopies,
+            remaining: getAllbooksremaining
+          }
         }
-    }
-    return allbooks
-}
-    ))}
+        return allbooks
+      }
+      ))
+  }
 
 
 
-  
-  return adallbooksArray.filter((value)=>{
-    if(allbooksearchTerm ==""){
-        return value
-    }else if(value.booktitle.toLowerCase().includes(allbooksearchTerm.toLowerCase())){
-        return value
+
+  return adallbooksArray.filter((value) => {
+    if (allbooksearchTerm == "") {
+      return value
+    } else if (value.booktitle.toLowerCase().includes(allbooksearchTerm.toLowerCase())) {
+      return value
     }
   }).map((item) => {
     // console.log(item.key)
@@ -85,7 +86,7 @@ function Content({allbooksearchTerm,setAllbooksearchterm}) {
           className="d-flex mt-3  items border-bottom list px-4"
           key={item.key}
         >
-          
+
           <p className="col-2 ">{item.booktitle}</p>
           <p className="col-2 m-0 text-center">{item.Auther}</p>
           <p className="col-2 m-0 text-center">{item.languages}</p>
@@ -93,15 +94,15 @@ function Content({allbooksearchTerm,setAllbooksearchterm}) {
           <p className="col-2 m-0 text-center">{item.remaining}</p>
           <div className="d-flex gap-3 mt-1 col-2 m-0 justify-content-center">
             <RiPencilFill className="ash"
-            onClick={() =>
-                {handleShowedit()
+              onClick={() => {
+                handleShowedit()
                 setGetallbookskey(item.key)
                 setGetallbookstitle(item.booktitle)
                 setGetallbooksauther(item.Auther)
                 setGetallbookslanguage(item.languages)
                 setGetallbookstotalcopies(item.totalcopies)
                 setGetallbooksremaining(item.remaining)
-                 }} />
+              }} />
             <BsTrashFill className="trash" onClick={handleShow} />
           </div>
         </div>

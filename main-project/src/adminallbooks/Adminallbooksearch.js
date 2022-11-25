@@ -5,7 +5,7 @@ import React, { useState, useContext } from "react";
 import { adminallbooksContext } from "../App";
 import shortid from "shortid";
 
-function Search({allbooksearchTerm,setAllbooksearchterm}) {
+function Search({ allbooksearchTerm, setAllbooksearchterm }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -14,12 +14,12 @@ function Search({allbooksearchTerm,setAllbooksearchterm}) {
     useContext(adminallbooksContext);
 
   const [adallBooks, setAdallBooks] = useState({
-    key:"",
+    key: "",
     booktitle: "",
     auther: "",
     language: "",
     totalcopies: "",
-    remaining:""
+    remaining: ""
   });
 
   const handleInputallbooks = (e) => {
@@ -29,47 +29,46 @@ function Search({allbooksearchTerm,setAllbooksearchterm}) {
     setAdallBooks({ ...adallBooks, [name]: value });
     console.log(adallBooks);
   };
-  
+
   const [error, setError] = useState(false);
 
   const handleAddallbooks = () => {
-    if(!adallBooks.booktitle||
-      !adallBooks.auther||
-      !adallBooks.language||
-      !adallBooks.totalcopies||
-      !adallBooks.remaining)
-      {
-        setError(true);
-      }
-    else{
-      
-    setAdallbooksarray([
-      ...adallbooksArray,
-      {
-        key: shortid.generate(),
-        booktitle: adallBooks.booktitle,
-        Auther: adallBooks.auther,
-        languages: adallBooks.language,
-        totalcopies: adallBooks.totalcopies,
-        remaining: adallBooks.remaining,
-      },
-    ]);
-  }
+    if (!adallBooks.booktitle ||
+      !adallBooks.auther ||
+      !adallBooks.language ||
+      !adallBooks.totalcopies ||
+      !adallBooks.remaining) {
+      setError(true);
+    }
+    else {
+
+      setAdallbooksarray([
+        ...adallbooksArray,
+        {
+          key: shortid.generate(),
+          booktitle: adallBooks.booktitle,
+          Auther: adallBooks.auther,
+          languages: adallBooks.language,
+          totalcopies: adallBooks.totalcopies,
+          remaining: adallBooks.remaining,
+        },
+      ]);
+    }
 
     console.log(adallBooks);
-    
+
     setAdallBooks({
-    
-    booktitle: "",
-    auther: "",
-    language: "",
-    totalcopies: "",
-    remaining: "",
+
+      booktitle: "",
+      auther: "",
+      language: "",
+      totalcopies: "",
+      remaining: "",
     })
-    
+
   };
 
-  const handleallbookSearch  = (e) =>{
+  const handleallbookSearch = (e) => {
     setAllbooksearchterm(e.target.value)
   }
 
@@ -106,7 +105,7 @@ function Search({allbooksearchTerm,setAllbooksearchterm}) {
                 placeholder="Eg: Pride and Prejudice"
                 autoFocus
               />
-              {error && !adallBooks.booktitle ?  <p className="errormsg">Please enter Name</p>:""}
+              {error && !adallBooks.booktitle ? <p className="errormsg">Please enter Name</p> : ""}
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Auther</Form.Label>
@@ -117,21 +116,21 @@ function Search({allbooksearchTerm,setAllbooksearchterm}) {
                 onChange={handleInputallbooks}
                 placeholder="Eg: Jane Austen"
               />
-               {error && !adallBooks.auther ?  <p className="errormsg">Please enter Auther</p>:""}
+              {error && !adallBooks.auther ? <p className="errormsg">Please enter Auther</p> : ""}
             </Form.Group>
             <Form.Group>
-            <Form.Label>Language</Form.Label>
-            <Form.Select aria-label="Default select example"
-              className="mb-3 "
-              name="language"
-              // value={adallBooks.language}
-              onChange={handleInputallbooks}>
+              <Form.Label>Language</Form.Label>
+              <Form.Select aria-label="Default select example"
+                className="mb-3 "
+                name="language"
+                // value={adallBooks.language}
+                onChange={handleInputallbooks}>
                 <option>Open this select menu</option>
                 <option value="English">English</option>
                 <option value="Spanish">Spanish</option>
                 <option value="Italian">Italian</option>
-            </Form.Select>
-            {error && !adallBooks.language ?  <p className="errormsg">Please enter Auther</p>:""}
+              </Form.Select>
+              {error && !adallBooks.language ? <p className="errormsg">Please enter Auther</p> : ""}
             </Form.Group>
             <div className="d-flex gap-3">
               <Form.Group
@@ -146,7 +145,7 @@ function Search({allbooksearchTerm,setAllbooksearchterm}) {
                   onChange={handleInputallbooks}
                   placeholder="0"
                 />
-                {error && !adallBooks.totalcopies ?  <p className="errormsg">Please enter Totalcopies</p>:""}
+                {error && !adallBooks.totalcopies ? <p className="errormsg">Please enter Totalcopies</p> : ""}
               </Form.Group>
               <Form.Group
                 className="mb-3"
@@ -160,7 +159,7 @@ function Search({allbooksearchTerm,setAllbooksearchterm}) {
                   onChange={handleInputallbooks}
                   placeholder="0"
                 />
-                {error &&  !adallBooks.remaining ?  <p className="errormsg">Please enter Remaining</p>:""}
+                {error && !adallBooks.remaining ? <p className="errormsg">Please enter Remaining</p> : ""}
               </Form.Group>
             </div>
           </Form>

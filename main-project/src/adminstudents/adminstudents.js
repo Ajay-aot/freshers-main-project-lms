@@ -9,11 +9,7 @@ const Adminstudent = () =>{
             
             <Orangesidebar/>
             <Mainfunction/>
-
-          
             
-        
-        
         </div>
     )
 }
