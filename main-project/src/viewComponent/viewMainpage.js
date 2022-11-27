@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Orangesidebar from '../Sidebar2'
 import SearchBar from './searchBar'
 import ViewHeading from './viewHeading'
@@ -10,7 +10,9 @@ import { useParams } from 'react-router-dom';
 
 
 function ViewMainpage() {
+  const [temporaryArray,setTemparray] = useState()
   let { id } = useParams();
+  
   return (
     <div className='d-flex background'>
     <Orangesidebar/>
@@ -19,11 +21,15 @@ function ViewMainpage() {
     <ArrowName
      id={id}/>
     <IndividualInfo
-    id={id}/>
+    id={id}
+    temporaryArray={temporaryArray}
+    setTemparray={setTemparray}/>
     <SearchBar
     id={id}/> 
     <ViewHeading
-    id={id}/>
+    id={id}
+    temporaryArray={temporaryArray}
+    setTemparray={setTemparray}/>
                
     </div>
     </div>

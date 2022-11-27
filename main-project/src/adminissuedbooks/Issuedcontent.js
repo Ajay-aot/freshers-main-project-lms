@@ -29,8 +29,6 @@ function Issuedcontent() {
                 const returnDate = new Date()
                 let date = returnDate.getDate() + '-' + parseInt(returnDate.getMonth() + 1) + '-' + returnDate.getFullYear()
                 item.returndate = date
-
-
             }
 
             // console.log("hi")
@@ -48,7 +46,6 @@ function Issuedcontent() {
             }
             return (item)
         })
-
         setAdissuedbooksarray(Returning)
         setAdallbooksarray(remainingCount)
         //  returnDate()

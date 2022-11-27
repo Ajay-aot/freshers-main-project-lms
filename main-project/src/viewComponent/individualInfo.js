@@ -1,8 +1,9 @@
 import React from 'react'
 import { useContext } from 'react'
+import { BsBookmarkStar } from 'react-icons/bs';
 import { studentContext,adminissuedBook,adminallbooksContext } from "../App";
 
-function IndividualInfo({ id }) {
+function IndividualInfo({ id,setTemparray,temporaryArray} ) {
     const [studentArray, setStudentarray] = useContext(studentContext);
     const [adissuedBooksarray, setAdissuedbooksarray] = useContext(adminissuedBook);
     const [adallbooksArray, setAdallbooksarray] = useContext(adminallbooksContext);
@@ -14,7 +15,44 @@ function IndividualInfo({ id }) {
             return(obj)
         }
     })
-   
+    // console.log(returnedBookscount.length)
+    // console.log(id)
+
+    let tempArray = returnedBookscount.map((obj)=>{
+            if(obj.Student == id){
+                let object = {
+                    key:obj.key,
+                    issuedate:obj.Issuedate,
+                    duedate:obj.Duedate,
+                    return:obj.return,
+                    returndate:obj.returndate }
+            
+            adallbooksArray.map((books)=>{
+               if(books.key == obj.Booktitle){
+                 object.Btitle = books.booktitle
+                 object.auther = books.Auther
+               }
+            })
+            return  object
+        }  
+        
+    }
+    )
+    // console.log(tempArray)
+    temporaryArray = tempArray
+// console.log(temporaryArray)
+
+
+    let returnCount = 0
+
+    tempArray.map((obj)=>{
+        if(obj.return != false){
+           returnCount = returnCount+1
+        }
+    })
+
+
+
 
 
    
@@ -42,15 +80,15 @@ function IndividualInfo({ id }) {
             <div className='border-start ps-3'>
                 <div className='d-flex gap-3'>
                     <p>Total Books issued</p>
-                    <p>5</p>
+                    <p>{tempArray.length}</p>
                 </div>
                 <div className='d-flex gap-4'>
                     <p>Returned Books</p>
-                    <p>4</p>
+                    <p>{returnCount}</p>
                 </div>
                 <div className='d-flex gap-4'>
                     <p>Total Fine</p>
-                    <p>Rs.70</p>
+                    <p></p>
                 </div>
 
 

@@ -1,7 +1,7 @@
 import ViewContent from './viewContent'
-function ViewHeading({id}){
+function ViewHeading({id,temporaryArray,setTemparray}){
     return(
-        <div className='listcontent px-5 '>
+        <div className='listcontent mx-5 '>
         
         <div className='d-flex pt-3 pb-1 px-4 mt-3  gap-2 headings border-bottom'>
                     <p className='col-2 m-0 '>Book Title</p>
@@ -13,7 +13,10 @@ function ViewHeading({id}){
                     
                 </div>
         <ViewContent
-        id={id}/>
+        id={id}
+        temporaryArray={temporaryArray}
+        setTemparray={setTemparray}
+        />
         </div>
     )
 }

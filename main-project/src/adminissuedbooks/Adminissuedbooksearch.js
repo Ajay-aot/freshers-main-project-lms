@@ -80,10 +80,7 @@ function Search() {
     console.log("hai")
 
     setAdallbooksarray(adallbooksArray.map((books) => {
-      // console.log(books.remaining)
       if (books.key === booksissuedTitle) {
-
-        // item.remaining = ++item.remaining 
         return {
           ...books,
           remaining: books.remaining - 1
@@ -104,9 +101,8 @@ function Search() {
 
     // To calculate the no. of days between two dates
     const Difference = Math.round((today.getTime() - new Date(duedate)) / (1000 * 3600 * 24))
-    // console.log(Difference)
+   
     setFine(Math.round(Difference * 10))
-    // console.log(fine)
     //  if(fine< 0){
     //   setFine("-")
     //  }
