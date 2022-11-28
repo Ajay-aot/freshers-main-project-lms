@@ -18,7 +18,7 @@ function IndividualInfo({ id,setTemparray,temporaryArray} ) {
     // console.log(returnedBookscount.length)
     // console.log(id)
 
-    let tempArray = returnedBookscount.map((obj)=>{
+    const tempArray = returnedBookscount.map((obj)=>{
             if(obj.Student == id){
                 let object = {
                     key:obj.key,
@@ -38,9 +38,11 @@ function IndividualInfo({ id,setTemparray,temporaryArray} ) {
         
     }
     )
-    // console.log(tempArray)
-    temporaryArray = tempArray
-// console.log(temporaryArray)
+   
+    // setTemparray(tempArray)
+    // console.log(temporaryArray)
+
+
 
 
     let returnCount = 0

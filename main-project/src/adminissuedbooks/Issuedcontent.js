@@ -51,6 +51,16 @@ function Issuedcontent() {
         //  returnDate()
     }
 
+    const issuedTemparray = adissuedBooksarray.map((issued)=>{
+        if(issued.return == false){
+            const newObj = {
+                
+            }
+        }
+    })
+
+
+
 
 
 

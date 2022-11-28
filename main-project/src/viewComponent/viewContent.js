@@ -9,8 +9,9 @@ function ViewContent({ id ,temporaryArray,setTemparray}) {
 
     const [adallbooksArray, setAdallbooksarray] = useContext(adminallbooksContext);
 
-   console.log(temporaryArray)
+
     return 
+       console.log(temporaryArray,"hai")
         temporaryArray.map((item)=>{
          
             return(
