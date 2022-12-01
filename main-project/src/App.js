@@ -4,10 +4,10 @@ import Adminstudent from './adminstudents/adminstudents'
 import Loginform from './Loginform';
 import { createContext,useState,useEffect } from 'react';
 import {BrowserRouter as Router,Routes,Route, json} from "react-router-dom"
-// import Mainfunction from './adminstudents/mainpage'
 import Adminissuedbooks from './adminissuedbooks/Adminissuedbooks'
 import Adminallbooks from './adminallbooks/Adminallbooks'
 import ViewMainpage from './viewComponent/viewMainpage';
+import MyBooks from './Studentsmybooks/MyBooks'
 
 const studentContext = createContext()
 const adminissuedBook = createContext()
@@ -63,10 +63,17 @@ function App() {
 
 
   const [Authentication,setAuthentication] = useState(false)
+  const [studentAuthentication,setStudentauthentication] = useState(false)
   
   const Authfun = () =>{
     setAuthentication(true)
   }
+
+  const Studentauthentication =() =>{
+    setStudentauthentication(true)
+    console.log("kitti")
+  }
+
   return (
     <div className="App">
       <adminissuedBook.Provider value={[adissuedBooksarray,setAdissuedbooksarray]}>
@@ -75,7 +82,8 @@ function App() {
            
             <Router>
                 <Routes>
-                <Route path="/" element={ !Authentication ?( <Loginform authfun={Authfun} /> ) : (<Adminissuedbooks/>)}/>
+                <Route path="/" element={ !Authentication ?( <Loginform Studentauthentication={Studentauthentication} authfun={Authfun} /> ) : (<Adminissuedbooks/>)}/>
+                <Route path="/studentmybooks" element={!studentAuthentication?(<Loginform />):(<MyBooks/>)}/>
                 <Route path="/students" element={<Adminstudent/>}/>
                 <Route path="/allbooks" element={<Adminallbooks/>}/>
                 <Route path="/issuedbooks" element={<Adminissuedbooks/>}/>

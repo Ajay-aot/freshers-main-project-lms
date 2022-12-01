@@ -10,7 +10,7 @@ import { useParams } from 'react-router-dom';
 
 
 function ViewMainpage() {
-  const [temporaryArray,setTemparray] = useState()
+  const [temporaryArray,setTemparray] = useState("")
   let { id } = useParams();
   
   return (
@@ -22,14 +22,16 @@ function ViewMainpage() {
      id={id}/>
     <IndividualInfo
     id={id}
-    temporaryArray={temporaryArray}
-    setTemparray={setTemparray}/>
+    // temporaryArray={temporaryArray}
+    setTemparray={setTemparray}
+    />
     <SearchBar
     id={id}/> 
     <ViewHeading
     id={id}
     temporaryArray={temporaryArray}
-    setTemparray={setTemparray}/>
+    setTemparray={setTemparray}
+    />
                
     </div>
     </div>

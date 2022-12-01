@@ -4,47 +4,74 @@ import React, { useState,useContext} from "react";
 import Sidebar from "./Sidebar";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Link } from "react-router-dom";
+import { Link,useNavigate  } from "react-router-dom";
+import { studentContext } from "./App";
 
-export default function Loginform({ authfun }) {
+export default function Loginform({ authfun,Studentauthentication }) {
+ 
+  const navigate = useNavigate();
+  
+  const [studentArray, setStudentarray] = useContext(studentContext);
 
-  // const [studentArray, setStudentarray] = useContext(studentContext);
   const adminUser = {
     email: "newadmin@admin.com",
     password: "123",
   };
 
   const [user, setUser] = useState({ email: "", password: "" });
-  // const [error,setError] = useState("")
+  const [student, setstudent] = useState({ email: "", password: "" });
 
   const onloginInput = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
+
+  const onstudentLogin = (e)=>{
+    setstudent({...student,[e.target.name]: e.target.value})
+  }
+
   const matchCheck = () => {
     if (
       adminUser.email === user.email &&
       adminUser.password === user.password
     ) {
       authfun();
-      // toast.success("Login successfully",{position:"top-center"})
       console.log("matched");
     } else {
         toast.error("Incorrect mail or password",{position:"top-center"})
-      console.log("not matching");
+        console.log("not matching");
     }
   };
+
+  const studentMatching = ()=> {
+    studentArray.find((item)=>{
+      if(item.email == student.email && item.confirmpassword == student.password)
+        {
+          Studentauthentication()
+          console.log("student-matched")
+        }
+        else
+        {
+          toast.error("Incorrect mail or password",{position:"top-center"})
+        }
+
+    })
+
+     
+  }
 
   const onSubmit = (e) => {
     e.preventDefault();
     matchCheck();
+    navigate("/")
   };
+  const onSubmitstudent=(e)=>{
+    e.preventDefault();
+    studentMatching()
+    navigate("/studentmybooks")
+  }
 
-  // const studentloginmailInput = (e)=>{
-  //   setStudentloginmailInputs(e.target.value)
-  //   console.log(studentloginmailInputs)}
 
-  const [studentloginmailInputs,setStudentloginmailInputs] = useState("")
-  const [studentloginpasswordInputs,setStudentloginpasswordInputs] = useState("")
+  
   const [studentSection,setStudentsection] = useState(false)
   const studentLogin = () =>{
     setStudentsection(true)
@@ -53,7 +80,7 @@ export default function Loginform({ authfun }) {
     }
 
   const adminLogin =() =>{
-    // setStudentsection(false)
+    setStudentsection(false)
     console.log("loginadd")
   }
 
@@ -69,18 +96,34 @@ export default function Loginform({ authfun }) {
               Welcome back! Please enter your details.
             </Form.Label>
 
-            <Form.Group className="mb-0">
-              <Form.Label className="login-labels me-5 mb-0" onClick={adminLogin}>Admin</Form.Label>
-              <Form.Label className="mb-0"  onClick={studentLogin}>Student</Form.Label>
-              <hr></hr>
+            <Form.Group className="mb-3  border-bottom">
+              <Form.Label className="login-labels me-5 mb-0 pb-2" 
+              onClick={adminLogin}
+              style={{
+                borderBottom: !studentSection ? "3px solid #ED7966" : "none",
+              }}
+              >Admin
+              </Form.Label>
+
+              <Form.Label className="mb-0 login-labels pb-2"
+               style={{
+                borderBottom: studentSection ? "3px solid #ED7966" : "none",
+                
+              }} 
+               onClick={studentLogin}
+              >Student
+              </Form.Label>
+              {/* <hr></hr> */}
             </Form.Group>
 
             <Form.Group className="mb-4" controlId="formBasicEmail">
-              <Form.Label className="login-labels">Email address</Form.Label>
+              <Form.Label className="login-labels" for="exampleDropdownFormEmail1">Email address</Form.Label>
               <Form.Control
+                id="exampleDropdownFormEmail1"
                 type="email"
                 name="email"
-                onChange={onloginInput}
+                value={studentSection?student.email:user.email}
+                onChange={studentSection ?  onstudentLogin : onloginInput}
                 
                 placeholder="Enter email"
               />
@@ -91,15 +134,19 @@ export default function Loginform({ authfun }) {
               <Form.Control
                 type="password"
                 name="password"
-                onChange={onloginInput}
+                value={studentSection?student.password:user.password}
+                onChange={studentSection ? onstudentLogin : onloginInput}
                 placeholder="Password"
               />
             </Form.Group>
-            <Link to="/">
-            <Button onClick={onSubmit} className="loginbtn" type="submit">
+            {/* <Link to="/"> */}
+            <Button onClick={studentSection ? onSubmitstudent : onSubmit} className="loginbtn" type="submit">
               LOGIN
             </Button>
-            </Link>
+            {/* </Link> */}
+            
+            {studentSection&&<p className="account mt-3"> Don’t have an account?<span className="register">Register</span></p>}
+          
           </Form>
         </div>
       </div>

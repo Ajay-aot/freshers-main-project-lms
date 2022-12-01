@@ -107,6 +107,21 @@ font-size: 16px;
 .background{
   background: #FFFBFA;
 }
-/* .viewdetails{
-  border-
-} */
+.account{
+  display: flex;
+  justify-content: center;
+  font-weight: 500;
+}
+.register{
+  color:#ED7966
+}
+.studentsidebar{
+  background-color: #09174A;
+   height:100vh;
+}
+.student-btn{
+  background-color: #09174A;
+}
+.studentallbooks{
+  width: 100%;
+}

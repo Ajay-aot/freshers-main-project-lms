@@ -1,5 +1,5 @@
 import Issuedcontent from './Issuedcontent'
-function Issuedheading(){
+function Issuedheading({ searchTerm, setSearchterm }){
     return(
         <div className='listcontent px-4 '>
         
@@ -11,7 +11,9 @@ function Issuedheading(){
                     <p className='col-2 m-0 text-start'>Fine<br></br>(Rs.10 per day)</p>
                     <p className='col-2 m-0 text-start'>Actions</p>
                 </div>
-        <Issuedcontent/>
+        <Issuedcontent
+         searchTerm={searchTerm}
+         setSearchterm={setSearchterm}/>
         </div>
     )
 }

@@ -5,7 +5,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { adminissuedBook, adminallbooksContext, studentContext } from "../App";
 import shortid from "shortid";
 
-function Search() {
+function Search({ searchTerm, setSearchterm }) {
   const [fine, setFine] = useState("")
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -113,6 +113,10 @@ function Search() {
   useEffect(() => {
     handleFine();
   })
+  const handleSearch = (e) => {
+    setSearchterm(e.target.value);
+    console.log(searchTerm);
+  };
 
 
 
@@ -122,8 +126,9 @@ function Search() {
     <div className="d-flex justify-content-between mt-4">
       <form className="col-6 ">
         <Form.Control
-          type="email"
+          type="search"
           placeholder="Search by student name or email "
+          onChange={handleSearch}
         />
       </form>
       <Button

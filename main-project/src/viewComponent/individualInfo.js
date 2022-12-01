@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import { BsBookmarkStar } from 'react-icons/bs';
 import { studentContext,adminissuedBook,adminallbooksContext } from "../App";
 
-function IndividualInfo({ id,setTemparray,temporaryArray} ) {
+function IndividualInfo({ id,setTemparray} ) {
     const [studentArray, setStudentarray] = useContext(studentContext);
     const [adissuedBooksarray, setAdissuedbooksarray] = useContext(adminissuedBook);
     const [adallbooksArray, setAdallbooksarray] = useContext(adminallbooksContext);
@@ -38,6 +38,8 @@ function IndividualInfo({ id,setTemparray,temporaryArray} ) {
         
     }
     )
+    // const newTemp =  tempArray
+    // setTemparray(newTemp)
    
     // setTemparray(tempArray)
     // console.log(temporaryArray)
