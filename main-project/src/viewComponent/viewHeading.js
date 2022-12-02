@@ -1,5 +1,5 @@
 import ViewContent from './viewContent'
-function ViewHeading({id,temporaryArray,setTemparray}){
+function ViewHeading({id,temporaryArray,setTemparray,searchTerm,setSearchterm}){
     return(
         <div className='listcontent mx-5 '>
         
@@ -16,6 +16,8 @@ function ViewHeading({id,temporaryArray,setTemparray}){
         id={id}
         temporaryArray={temporaryArray}
         setTemparray={setTemparray}
+        searchTerm={searchTerm}
+        setSearchterm={setSearchterm}
         />
         </div>
     )

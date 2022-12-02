@@ -24,7 +24,7 @@ function Search({ searchTerm, setSearchterm }) {
     let name = e.target.name;
     let value = e.target.value;
     setStudents({ ...students, [name]: value });
-    console.log(students);
+    console.log(students.name);
   };
   const handleAddstudent = () => {
 
@@ -41,17 +41,19 @@ function Search({ searchTerm, setSearchterm }) {
     });
   };
 
-  const [error, setError] = useState(false);
+  const [error,setError] = useState(false);
 
   const checkingPassword = () => {
     console.log("test");
     if (
-      !students.name ||
-      !students.email ||
-      !students.password ||
-      !students.confirmpassword ||
-      students.password != students.confirmpassword
-    ) {
+      students.name.length == 0 ||
+      students.email.length == 0 ||
+      students.password.length == 0 ||
+      students.confirmpassword.length == 0 ||
+      students.password !== students.confirmpassword
+    )
+    {
+      console.log("error")
       setError(true);
     }
     else {
@@ -102,12 +104,12 @@ function Search({ searchTerm, setSearchterm }) {
               <Form.Control
                 name="name"
                 type="text"
-                // value={students.name}
+                value={students.name}
                 onChange={handleInput}
                 placeholder="Eg: John Doe"
                 autoFocus
               />
-              {error && !students.name ? <p className="errormsg">Please enter Name</p> : ""}
+              {error && students.name.length ==0 ? <p className="errormsg">Please enter Name</p> : ""}
 
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -115,12 +117,12 @@ function Search({ searchTerm, setSearchterm }) {
               <Form.Control
                 name="email"
                 type="Email"
-                // value={students.email}
+                value={students.email}
                 onChange={handleInput}
                 placeholder="Eg: johndoe@gmail.com"
               // autoFocus
               />
-              {error && !students.email ? <p className="errormsg">Please enter Email</p> : ""}
+              {error && students.email.length == 0 ? <p className="errormsg">Please enter Email</p> : ""}
 
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -128,12 +130,12 @@ function Search({ searchTerm, setSearchterm }) {
               <Form.Control
                 name="password"
                 type="password"
-                // value={students.password}
+                value={students.password}
                 onChange={handleInput}
                 placeholder="********"
               // autoFocus
               />
-              {error && !students.password ? <p className="errormsg">Please enter password</p> : ""}
+              {error && students.password.length == 0 ? <p className="errormsg">Please enter password</p> : ""}
 
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -141,12 +143,12 @@ function Search({ searchTerm, setSearchterm }) {
               <Form.Control
                 name="confirmpassword"
                 type="password"
-                // value={students.confirmpassword}
+                value={students.confirmpassword}
                 onChange={handleInput}
                 placeholder="********"
               // autoFocus
               />
-              {error && students.password != students.confirmpassword ? <p className="errormsg">Please confirm password</p> : ""}
+              {error && students.password !== students.confirmpassword ? <p className="errormsg">Please confirm password</p> : ""}
             </Form.Group>
           </Form>
         </Modal.Body>

@@ -5,6 +5,7 @@ import { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { RiCreativeCommonsSaLine } from "react-icons/ri";
+import DateDiff from 'date-diff';
 
 function Issuedcontent({ searchTerm, setSearchterm }) {
   const [returnKey, setReturnkey] = useState("");
@@ -58,6 +59,7 @@ function Issuedcontent({ searchTerm, setSearchterm }) {
         issueDate: issued.Issuedate,
         dueDate: issued.Duedate,
         return: issued.return,
+        // fine:issued.Fine
       };
       adallbooksArray.map((books) => {
         if (books.key == issued.Booktitle) {
@@ -69,6 +71,11 @@ function Issuedcontent({ searchTerm, setSearchterm }) {
           newObj.name = student.name;
         }
       });
+      var date1 = new Date();
+      var date2 = new Date(issued.Duedate);
+      var diff = new DateDiff(date1, date2); 
+      newObj.fine = Math.round(diff.days())*10
+
       return newObj;
     }
   });
@@ -101,7 +108,7 @@ function Issuedcontent({ searchTerm, setSearchterm }) {
             <p className="col-2 m-0  text-start">{item.dueDate}</p>
 
             <p className="col-2 m-0  text-start">
-              {/* {item.Fine < 0 ? "-" : item.Fine} */}
+              {item.fine < 0 ? "-" : item.fine}
             </p>
 
             <div className="d-flex gap-3  mt-1 ash justify-content-center">

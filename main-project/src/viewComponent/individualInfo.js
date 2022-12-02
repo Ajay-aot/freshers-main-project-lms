@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useContext } from 'react'
-import { BsBookmarkStar } from 'react-icons/bs';
+import { BsBookmarkStar, BsSlashLg } from 'react-icons/bs';
 import { studentContext,adminissuedBook,adminallbooksContext } from "../App";
+import DateDiff from 'date-diff';
 
-function IndividualInfo({ id,setTemparray} ) {
+function IndividualInfo({ id,setTemparray,temporaryArray} ) {
     const [studentArray, setStudentarray] = useContext(studentContext);
     const [adissuedBooksarray, setAdissuedbooksarray] = useContext(adminissuedBook);
     const [adallbooksArray, setAdallbooksarray] = useContext(adminallbooksContext);
@@ -15,45 +16,64 @@ function IndividualInfo({ id,setTemparray} ) {
             return(obj)
         }
     })
-    // console.log(returnedBookscount.length)
-    // console.log(id)
-
-    const tempArray = returnedBookscount.map((obj)=>{
-            if(obj.Student == id){
-                let object = {
-                    key:obj.key,
-                    issuedate:obj.Issuedate,
-                    duedate:obj.Duedate,
-                    return:obj.return,
-                    returndate:obj.returndate }
-            
-            adallbooksArray.map((books)=>{
-               if(books.key == obj.Booktitle){
-                 object.Btitle = books.booktitle
-                 object.auther = books.Auther
-               }
-            })
-            return  object
-        }  
-        
-    }
-    )
-    // const newTemp =  tempArray
-    // setTemparray(newTemp)
    
-    // setTemparray(tempArray)
-    // console.log(temporaryArray)
+    let tempArray = []
+    
+   
+useEffect(() => {
+    
+     tempArray = returnedBookscount.map((obj)=>{
+        if(obj.Student == id){
+            let object = {
+                key:obj.key,
+                issuedate:obj.Issuedate,
+                duedate:obj.Duedate,
+                return:obj.return,
+                returndate:obj.returndate }
+        
+        adallbooksArray.map((books)=>{
+           if(books.key == obj.Booktitle){
+             object.Btitle = books.booktitle
+             object.auther = books.Auther
+           }
+        })
+
+        var date1 = obj.returndate == "" ? new Date() : new Date(obj.returndate)
+        var date2 = new Date(obj.Duedate);
+        var diff = new DateDiff(date1, date2); 
+        object.fine = Math.floor(diff.days())*10
+        // console.log(object.fine)
+         
+        // fine =  fine + object.fine
+        
+
+        return  object
+    }})
+// console.log(tempArray.length)
+
+setTemparray(tempArray) 
+}, [])
+
+
+    
 
 
 
 
+    let fine = 0
     let returnCount = 0
 
-    tempArray.map((obj)=>{
+    temporaryArray.map((obj)=>{
+        // console.log((obj.return))
         if(obj.return != false){
            returnCount = returnCount+1
         }
+        if(obj.fine>0){
+            fine = fine+ obj.fine
+        }
     })
+   
+  
 
 
 
@@ -84,7 +104,7 @@ function IndividualInfo({ id,setTemparray} ) {
             <div className='border-start ps-3'>
                 <div className='d-flex gap-3'>
                     <p>Total Books issued</p>
-                    <p>{tempArray.length}</p>
+                    <p>{temporaryArray.length}</p>
                 </div>
                 <div className='d-flex gap-4'>
                     <p>Returned Books</p>
@@ -92,7 +112,7 @@ function IndividualInfo({ id,setTemparray} ) {
                 </div>
                 <div className='d-flex gap-4'>
                     <p>Total Fine</p>
-                    <p></p>
+                    <p>{fine}</p>
                 </div>
 
 

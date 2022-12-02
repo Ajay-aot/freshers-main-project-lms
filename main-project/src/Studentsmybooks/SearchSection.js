@@ -1,26 +1,25 @@
 import React from 'react'
+import Form from "react-bootstrap/Form";
 
 function SearchSection() {
   return (
-    <div>
-    <form className="col-6 ">
+    <div className='d-flex justify-content-between mt-4'>
+    <form className="col-6">
     <Form.Control
-      type="email"
+      type="search"
       placeholder="Search by student name or email "
-      onChange={handleallbookSearch}
+     
     />
     </form>
-    <div class="dropdown">
-        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown link
-        </a>
-
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-        </ul>
-        </div>
+    <div className='d-flex'>
+    <p className='d-flex mb-0 pt-1'>Sort By:</p>
+    <select className="form-select col" aria-label="Default select example">
+        {/* <option selected>Issue Date</option> */}
+        <option >Issue Date</option>
+        <option >Due Date</option>
+        
+    </select>
+    </div>
     </div>
   )
 }

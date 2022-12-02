@@ -10,8 +10,9 @@ import { useParams } from 'react-router-dom';
 
 
 function ViewMainpage() {
-  const [temporaryArray,setTemparray] = useState("")
+  const [temporaryArray,setTemparray] = useState([])
   let { id } = useParams();
+  const [searchTerm,setSearchterm] = useState("")
   
   return (
     <div className='d-flex background'>
@@ -22,15 +23,21 @@ function ViewMainpage() {
      id={id}/>
     <IndividualInfo
     id={id}
-    // temporaryArray={temporaryArray}
+    temporaryArray={temporaryArray}
     setTemparray={setTemparray}
+    // searchTerm={searchTerm}
+    // setSearchterm={setSearchterm}
     />
     <SearchBar
-    id={id}/> 
+    id={id}
+    searchTerm={searchTerm}
+    setSearchterm={setSearchterm}/> 
     <ViewHeading
     id={id}
     temporaryArray={temporaryArray}
     setTemparray={setTemparray}
+    searchTerm={searchTerm}
+    setSearchterm={setSearchterm}
     />
                
     </div>
