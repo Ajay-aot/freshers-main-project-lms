@@ -1,13 +1,21 @@
 import React from 'react'
 import Form from "react-bootstrap/Form";
 
-function SearchSection() {
+function SearchSection({searchTerm,setSearchterm}) {
+  // const onclick = ()=>{
+  //   console.log("clickedddddddddddddd")
+  // }
+  const handleSearch = (e) => {
+    setSearchterm(e.target.value);
+    console.log(searchTerm);
+  };
   return (
     <div className='d-flex justify-content-between mt-4'>
     <form className="col-6">
     <Form.Control
       type="search"
-      placeholder="Search by student name or email "
+      placeholder="Search by booktitle or author "
+      onChange={handleSearch}
      
     />
     </form>

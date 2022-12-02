@@ -7,10 +7,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Link,useNavigate  } from "react-router-dom";
 import { studentContext } from "./App";
 
-export default function Loginform({ authfun,Studentauthentication }) {
+export default function Loginform({ authfun,Studentauthentication,studentkey,setStudentkey}) {
  
   const navigate = useNavigate();
-  
   const [studentArray, setStudentarray] = useContext(studentContext);
 
   const adminUser = {
@@ -47,6 +46,10 @@ export default function Loginform({ authfun,Studentauthentication }) {
       if(item.email == student.email && item.confirmpassword == student.password)
         {
           Studentauthentication()
+         
+          let key = item.key
+          setStudentkey(key)
+          console.log(studentkey)
           console.log("student-matched")
         }
         else
@@ -113,7 +116,7 @@ export default function Loginform({ authfun,Studentauthentication }) {
                onClick={studentLogin}
               >Student
               </Form.Label>
-              {/* <hr></hr> */}
+              
             </Form.Group>
 
             <Form.Group className="mb-4" controlId="formBasicEmail">
@@ -139,11 +142,11 @@ export default function Loginform({ authfun,Studentauthentication }) {
                 placeholder="Password"
               />
             </Form.Group>
-            {/* <Link to="/"> */}
+            
             <Button onClick={studentSection ? onSubmitstudent : onSubmit} className="loginbtn" type="submit">
               LOGIN
             </Button>
-            {/* </Link> */}
+           
             
             {studentSection&&<p className="account mt-3"> Don’t have an account?<span className="register">Register</span></p>}
           
