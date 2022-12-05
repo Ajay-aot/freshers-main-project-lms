@@ -5,9 +5,9 @@ import Heading from './Heading';
 import Content from './Content';
 import { useState } from "react";
 
-function AllBooks({studentkey,setStudentkey}) {
+function AllBooks() {
     const [searchTerm, setSearchterm] = useState("");
-    console.log(studentkey)
+    
   return (
     <div className="d-flex ">
       <Sidebar3 />
@@ -18,8 +18,8 @@ function AllBooks({studentkey,setStudentkey}) {
          setSearchterm={setSearchterm}/>
         <Heading/>
         <Content
-        studentkey={studentkey}
-        setStudentkey={setStudentkey}/>
+         searchTerm={searchTerm}
+         setSearchterm={setSearchterm}/>
       </div>
     </div>
   )

@@ -16,7 +16,7 @@ const adminallbooksContext = createContext();
 
 function App() {
   const [studentSection, setStudentsection] = useState(false);
-  const [studentkey, setStudentkey] = useState("");
+  // const [studentkey, setStudentkey] = useState("");
   const getLocalStudent = () => {
     let studentList = localStorage.getItem("studentArray");
     if (studentList) {
@@ -96,13 +96,13 @@ function App() {
                           studentSection={studentSection}
                           setStudentsection={setStudentsection}
                           Studentauthentication={Studentauthentication}
-                          studentkey={studentkey}
-                          setStudentkey={setStudentkey}
+                          // studentkey={studentkey}
+                          // setStudentkey={setStudentkey}
                         />
                       ) : (
                         <MyBooks
-                          studentkey={studentkey}
-                          setStudentkey={setStudentkey}
+                          // studentkey={studentkey}
+                          // setStudentkey={setStudentkey}
                         />
                       )
                     ) : !Authentication ? (
@@ -132,8 +132,8 @@ function App() {
                   path="/studentallbooks"
                   element={
                     <AllBooks
-                      studentkey={studentkey}
-                      setStudentkey={setStudentkey}
+                      // studentkey={studentkey}
+                      // setStudentkey={setStudentkey}
                     />
                   }
                 />

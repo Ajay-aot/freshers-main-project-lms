@@ -51,8 +51,8 @@ export default function Loginform({ authfun,Studentauthentication,studentkey,set
           // navigate("/studentmybooks")
          
           let key = item.key
-          console.log(key)
-          sessionStorage.setItem("studentunequekey", "value");
+          // console.log(key)
+          sessionStorage.setItem("studentunequekey", key);
             // setStudentkey(key)
             // console.log(studentkey)
           console.log("student-matched")

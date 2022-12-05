@@ -6,7 +6,7 @@ import Heading2 from "./Heading2";
 import Contents from "./Contents";
 import { useState } from "react";
 
-function MyBooks({studentkey,setStudentkey}) {
+function MyBooks() {
   const [searchTerm, setSearchterm] = useState("");
 
 
@@ -21,8 +21,7 @@ function MyBooks({studentkey,setStudentkey}) {
         <Contents
         searchTerm={searchTerm}
         setSearchterm={setSearchterm}
-        studentkey={studentkey} 
-        setStudentkey={setStudentkey} />
+         />
       </div>
     </div>
   );

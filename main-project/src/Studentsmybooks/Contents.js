@@ -6,10 +6,12 @@ import Heading2 from "./Heading2";
 import Heading1 from "./Heading1"; 
 
 
-function Contents({studentkey,searchTerm}) {
+function Contents({searchTerm}) {
   const [adissuedBooksarray, setAdissuedbooksarray] = useContext(adminissuedBook);
   const [adallbooksArray, setAdallbooksarray] =
   useContext(adminallbooksContext);
+
+  let studentkey = sessionStorage.getItem("studentunequekey");
 
   const studentInfo = adissuedBooksarray.filter((obj) => {
     if (obj.Student == studentkey) {

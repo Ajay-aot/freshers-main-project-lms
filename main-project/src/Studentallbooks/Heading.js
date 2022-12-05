@@ -9,7 +9,7 @@ function Heading() {
             <p className="col-2 m-0 text-start">Language</p>
             <p className="col-2 m-0  text-start">Total Copies</p>
             <p className="col-2 m-0 text-start">Remaining</p>
-            
+            <p className="col-2 m-0 text-start">Action</p>
           </div>
         </div>
         )
