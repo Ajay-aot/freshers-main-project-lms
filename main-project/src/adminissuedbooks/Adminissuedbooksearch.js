@@ -56,7 +56,7 @@ function Search({ searchTerm, setSearchterm }) {
   const handleAddissuedbook = () => {
 
     setAdissuedbooksarray([
-      ...adissuedBooksarray,
+      ...adissuedBooksarray,  
       {
         key: shortid.generate(),
         Booktitle: adissuedBooks.booktitle,

@@ -3,18 +3,20 @@ import "./App.css";
 import Adminstudent from "./adminstudents/adminstudents";
 import Loginform from "./Loginform";
 import { createContext, useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, json } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Adminissuedbooks from "./adminissuedbooks/Adminissuedbooks";
 import Adminallbooks from "./adminallbooks/Adminallbooks";
 import ViewMainpage from "./viewComponent/viewMainpage";
 import MyBooks from "./Studentsmybooks/MyBooks";
+import AllBooks from "./Studentallbooks/AllBooks";
 
 const studentContext = createContext();
 const adminissuedBook = createContext();
 const adminallbooksContext = createContext();
 
 function App() {
-  const [studentkey,setStudentkey] = useState("")
+  const [studentSection, setStudentsection] = useState(false);
+  const [studentkey, setStudentkey] = useState("");
   const getLocalStudent = () => {
     let studentList = localStorage.getItem("studentArray");
     if (studentList) {
@@ -88,27 +90,54 @@ function App() {
                 <Route
                   path="/"
                   element={
-                    !Authentication ? (
+                    studentSection ? (
+                      !studentAuthentication ? (
+                        <Loginform
+                          studentSection={studentSection}
+                          setStudentsection={setStudentsection}
+                          Studentauthentication={Studentauthentication}
+                          studentkey={studentkey}
+                          setStudentkey={setStudentkey}
+                        />
+                      ) : (
+                        <MyBooks
+                          studentkey={studentkey}
+                          setStudentkey={setStudentkey}
+                        />
+                      )
+                    ) : !Authentication ? (
                       <Loginform
-                        Studentauthentication={Studentauthentication}
+                        
                         authfun={Authfun}
-                        studentkey={studentkey} 
-                        setStudentkey={setStudentkey}
+                        // studentkey={studentkey}
+                        // setStudentkey={setStudentkey}
+                        studentSection={studentSection}
+                        setStudentsection={setStudentsection}
+                        Studentauthentication={Studentauthentication}
                       />
                     ) : (
                       <Adminissuedbooks />
                     )
                   }
                 />
-                <Route
+
+                {/* <Route
                   path="/studentmybooks"
-                  element={!studentAuthentication ? <Loginform  /> : <MyBooks studentkey={studentkey} 
-                  setStudentkey={setStudentkey}/>}
-                />
+                  element={(!studentAuthentication ? <Loginform  /> : <MyBooks studentkey={studentkey} setStudentkey={setStudentkey}/>)}/> */}
                 <Route path="/students" element={<Adminstudent />} />
                 <Route path="/allbooks" element={<Adminallbooks />} />
                 <Route path="/issuedbooks" element={<Adminissuedbooks />} />
                 <Route path="/studentdetails/:id" element={<ViewMainpage />} />
+                <Route
+                  path="/studentallbooks"
+                  element={
+                    <AllBooks
+                      studentkey={studentkey}
+                      setStudentkey={setStudentkey}
+                    />
+                  }
+                />
+                <Route path="/studentmybooks" element={<MyBooks />} />
               </Routes>
             </Router>
           </studentContext.Provider>

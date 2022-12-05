@@ -23,8 +23,8 @@ function SearchSection({searchTerm,setSearchterm}) {
     <p className='d-flex mb-0 pt-1'>Sort By:</p>
     <select className="form-select col" aria-label="Default select example">
         {/* <option selected>Issue Date</option> */}
-        <option >Newest</option>
-        <option >Oldest</option>
+        <option >Book Title</option>
+        <option >Author</option>
         
     </select>
     </div>

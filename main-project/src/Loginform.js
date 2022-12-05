@@ -4,10 +4,11 @@ import React, { useState,useContext} from "react";
 import Sidebar from "./Sidebar";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Link,useNavigate  } from "react-router-dom";
+import { useNavigate  } from "react-router-dom";
 import { studentContext } from "./App";
 
-export default function Loginform({ authfun,Studentauthentication,studentkey,setStudentkey}) {
+
+export default function Loginform({ authfun,Studentauthentication,studentkey,setStudentkey,studentSection,setStudentsection}) {
  
   const navigate = useNavigate();
   const [studentArray, setStudentarray] = useContext(studentContext);
@@ -34,6 +35,7 @@ export default function Loginform({ authfun,Studentauthentication,studentkey,set
       adminUser.password === user.password
     ) {
       authfun();
+      navigate("/issuedbooks")
       console.log("matched");
     } else {
         toast.error("Incorrect mail or password",{position:"top-center"})
@@ -46,10 +48,13 @@ export default function Loginform({ authfun,Studentauthentication,studentkey,set
       if(item.email == student.email && item.confirmpassword == student.password)
         {
           Studentauthentication()
+          // navigate("/studentmybooks")
          
           let key = item.key
-          setStudentkey(key)
-          console.log(studentkey)
+          console.log(key)
+          sessionStorage.setItem("studentunequekey", "value");
+            // setStudentkey(key)
+            // console.log(studentkey)
           console.log("student-matched")
         }
         else
@@ -75,7 +80,7 @@ export default function Loginform({ authfun,Studentauthentication,studentkey,set
 
 
   
-  const [studentSection,setStudentsection] = useState(false)
+  // const [studentSection,setStudentsection] = useState(false)
   const studentLogin = () =>{
     setStudentsection(true)
     console.log("loginssss")

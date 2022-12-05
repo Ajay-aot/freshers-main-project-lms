@@ -8,6 +8,8 @@ import { useState } from "react";
 
 function MyBooks({studentkey,setStudentkey}) {
   const [searchTerm, setSearchterm] = useState("");
+
+
   return (
     <div className="d-flex ">
       <Sidebar3 />
@@ -16,8 +18,6 @@ function MyBooks({studentkey,setStudentkey}) {
         <SearchSection 
         searchTerm={searchTerm}
         setSearchterm={setSearchterm}/>
-        <Heading1 />
-        <Heading2 />
         <Contents
         searchTerm={searchTerm}
         setSearchterm={setSearchterm}
