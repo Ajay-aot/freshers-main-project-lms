@@ -6,7 +6,7 @@ import Heading2 from "./Heading2";
 import Heading1 from "./Heading1"; 
 
 
-function Contents({searchTerm}) {
+function Contents({searchTerm,mybooksSort,setMybooksort}) {
   const [adissuedBooksarray, setAdissuedbooksarray] = useContext(adminissuedBook);
   const [adallbooksArray, setAdallbooksarray] =
   useContext(adminallbooksContext);
@@ -15,7 +15,7 @@ function Contents({searchTerm}) {
 
   const studentInfo = adissuedBooksarray.filter((obj) => {
     if (obj.Student == studentkey) {
-      console.log(obj.Student)
+      // console.log(obj.Student)
       return obj;
     }
   });
@@ -67,7 +67,9 @@ function Contents({searchTerm}) {
     }
   });
 
-  console.log(studentkey)
+  // setMybooksort(studentTemparray)
+  // console.log(mybooksSort)
+  // console.log(studentkey)
   return (
     <>
 

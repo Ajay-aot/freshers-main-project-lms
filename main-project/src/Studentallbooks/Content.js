@@ -74,9 +74,9 @@ console.log(adallbooksArray)
             <p className="col-2 ">{item.booktitle}</p>
             <p className="col-2 m-0  text-start">{item.Auther}</p>
             <p className="col-2 m-0  text-start ">{item.languages}</p>
-            <p className="col-2 m-0  text-start">{item.totalcopies}</p>
+            <p className="col-2 m-0 ms-3 text-start">{item.totalcopies}</p>
             <p className="col-2 m-0  text-start">{item.remaining}</p>
-            <BsEye className="ash mb-3" />
+            <BsEye className=" ash mb-3 mt-1" />
           </div>
           </div>)
       })
